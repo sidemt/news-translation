@@ -1,6 +1,6 @@
 > -  原文地址：[The JavaScript Beginner's Handbook (2020 Edition)](https://www.freecodecamp.org/news/the-complete-javascript-handbook-f26b2c71719c/)
 > -  原文作者：[Flavio Copes](https://www.freecodecamp.org/news/author/flavio/)
-> -  译者：
+> -  译者：budblack
 > -  校对者：
 
 ![The JavaScript Beginner's Handbook (2020 Edition)](https://www.freecodecamp.org/news/content/images/size/w2000/2020/03/cover-1.png)
