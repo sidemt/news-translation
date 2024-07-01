@@ -29,7 +29,7 @@ jobs:
           githubToken: ${{ github.token }}
 
       - name:
-        uses: budblack/skills-hello-github-actions@dev
+        uses: budblack/article-markdown-auto-translate@dev
         with:
           newsLink: '${{ github.event.issue.Body }}'
           ignoreSelector: '.ad-wrapper'
