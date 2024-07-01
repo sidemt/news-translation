@@ -1,5 +1,6 @@
 ---
 title: How to Pick a Font – An In-Depth Guide for Developers
+date: 2023-09-13T11:18:31.000Z
 author: Seth Falco
 authorURL: https://www.freecodecamp.org/news/author/seth/
 originalURL: https://www.freecodecamp.org/news/things-to-consider-when-picking-fonts/
@@ -7,7 +8,7 @@ translator: ""
 reviewer: ""
 ---
 
-September 13, 2023 / [#Fonts][1]
+/ [#Fonts][1]
 
 <!-- more -->
 
@@ -41,7 +42,7 @@ Instead, I'd recommend you consider an expansive font selection, featuring typef
 
 In short, you may just need an arbitrary typeface to show arbitrary text on your website. That's fine. But it's worth sticking to the wide array of typefaces already installed on the client's operating system.
 
-In other words…… only fetch an external font when it actually enhances the user experience!
+In other words… only fetch an external font when it actually enhances the user experience!
 
 ## Why?
 
@@ -53,7 +54,7 @@ This is particularly relevant to corporate websites, blogs, forums, and web appl
 
 The user is there to consume content or get a task done. Unless you're looking to be creative, the average user doesn't know, and doesn't care, what typeface it has so long as it's legible.
 
-Meanwhile, they may care for other things impacted by your font choices……
+Meanwhile, they may care for other things impacted by your font choices…
 
 ### Performance
 
@@ -218,64 +219,25 @@ Whether you want to go local, or just need to specify some fallback fonts, here 
 
 ## Cross-Platform Font Stacks
 
-The following is an opinionated list of what your local font stacks could look like. You'll find countless others on the internet if you search.
+There are countless articles and resources available online that feature predefined font lists you can use. These are referred to as "_font stacks_".
 
-Some font classifications don't explicitly include a font from each operating system, but remember that the generic font family at the end will have you covered.
+In particular, I'd like to highlight a resource by [Dan Klammer][30], a designer and web developer who created [Modern Font Stacks][31] ([GitHub repository][32]), a website that helps you pick out native font stacks for your project.
 
-### Sans Serif
+Modern Font Stacks proposes a list of fonts for a variety of styles like Neo-Grotesque (a style of sans-serif) or Monospace Code (a style of monospace) and offers a visualization of how it will look across operating systems. It runs through a description of each stack, the CSS to use it, metadata like the weights available, and which of the fonts you personally have installed.
 
-| Typeface | Operating Systems |
-| --- | --- |
-| Nimbus Sans | Debian, Ubuntu |
-| Helvetica | iOS, macOS, tvOS, watchOS |
-| Arial | iOS, macOS, Windows |
-| [Roboto][30] | Android |
-| [Liberation Sans][31] | Debian, Ubuntu |
-| [DejaVu Sans][32] | Debian, postmarketOS, Ubuntu |
-| [Arimo][33] | ChromeOS, Debian |
-| sans-serif |  |
+Some font classifications don't explicitly include a font from every operating system that exists, but remember that the generic font family (`sans-serif`, `serif`, `monospace`, `cursive`, and so on.) at the end will have you covered.
 
-### Serif
+If you like the stack, you can run with it. But don't feel constrained either, you can also use it as a starting point and tweak the font stack to your needs.
 
-| Typeface | Operating Systems |
-| --- | --- |
-| [Tinos][34] | ChromeOS, Debian |
-| [Liberation Serif][35] | Debian, Ubuntu |
-| Times New Roman | iOS, macOS, tvOS, watchOS, Windows |
-| [Noto Serif][36] | Arch, postmarketOS, Ubuntu |
-| [PT Serif][37] | Debian, iOS, macOS |
-| [Caladea][38] | Ubuntu |
-| [DejaVu Serif][39] | Debian, postmarketOS, Ubuntu |
-| serif |  |
+I've included images from the GitHub repository (at the time of writing), featuring proposed font stacks for two of the most common styles used on the internet today:
 
-### Monospace
+![neo-grotesque](https://www.freecodecamp.org/news/content/images/2024/05/neo-grotesque.png)
 
-| Typeface | Operating Systems |
-| --- | --- |
-| [Liberation Mono][40] | Debian, Ubuntu |
-| Monaco | iOS, macOS |
-| [Cousine][41] | ChromeOS, Debian |
-| Consolas | Windows |
-| monospace |  |
+Base font stack proposed by Modern Font Stacks for the Neo-Grotesque style, a type of sans-serif font.
 
-### Handwriting
+![monospace-code](https://www.freecodecamp.org/news/content/images/2024/05/monospace-code.png)
 
-| Typeface | Operating Systems |
-| --- | --- |
-| Brush Script MT Italic | iOS, macOS |
-| Ink Free | Windows |
-| Segoe Script | Windows |
-| cursive |  |
-
-### Emoji
-
-| Typeface | Operating Systems | Comments |
-| --- | --- | --- |
-| [Noto Color Emoji][42] | Android, Debian, Fedora, postmarketOS, Ubuntu |  |
-| Segoe UI Emoji | Windows |  |
-| Apple Color Emoji | iOS, macOS, tvOS, watchOS |  |
-| [Twemoji Mozilla][43] |  | Packaged in Firefox and Thunderbird. |
-| emoji |  |  |
+Base font stack proposed by Modern Font Stacks for the Monospace Code style, a type of monospace font.
 
 ## Conclusion
 
@@ -283,13 +245,13 @@ In the end, the user experience is what matters most. Sometimes that means prior
 
 I hope this was worth your time, and that with the knowledge you can make an informed decision when choosing fonts for your next project.
 
-Feedback and questions welcome, you can hit me up on [GitHub][44], [Mastodon][45], or [LinkedIn][46]!
+Feedback and questions welcome, you can hit me up on [GitHub][33], [Mastodon][34], or [LinkedIn][35]!
 
 ---
 
 ![Seth Falco](https://www.freecodecamp.org/news/content/images/size/w60/2021/06/seth-falco-gravatar.jpeg)
 
-[Seth Falco][47]
+[Seth Falco][36]
 
 Linux enthusiast, privacy advocate, and open-sourcerer. 🧙🏽‍♂️
 
@@ -297,7 +259,7 @@ Linux enthusiast, privacy advocate, and open-sourcerer. 🧙🏽‍♂️
 
 If this article was helpful, share it.
 
-Learn to code for free. freeCodeCamp's open source curriculum has helped more than 40,000 people get jobs as developers. [Get started][48]
+Learn to code for free. freeCodeCamp's open source curriculum has helped more than 40,000 people get jobs as developers. [Get started][37]
 
 [1]: /news/tag/fonts/
 [2]: /news/author/seth/
@@ -328,22 +290,11 @@ Learn to code for free. freeCodeCamp's open source curriculum has helped more th
 [27]: https://learn.microsoft.com/en-us/typography/fonts/windows_11_font_list#introduction
 [28]: https://en.wikipedia.org/wiki/Croscore_fonts
 [29]: https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Fundamentals#web_safe_fonts
-[30]: https://fonts.google.com/specimen/Roboto
-[31]: https://github.com/liberationfonts/liberation-fonts
-[32]: https://dejavu-fonts.github.io/
-[33]: https://fonts.google.com/specimen/Arimo
-[34]: https://fonts.google.com/specimen/Tinos
-[35]: https://github.com/liberationfonts/liberation-fonts
-[36]: https://notofonts.github.io/
-[37]: https://fonts.google.com/specimen/PT+Serif
-[38]: https://fonts.google.com/specimen/Caladea
-[39]: https://dejavu-fonts.github.io/
-[40]: https://github.com/liberationfonts/liberation-fonts
-[41]: https://fonts.google.com/specimen/Cousine
-[42]: https://fonts.google.com/noto/specimen/Noto+Color+Emoji
-[43]: https://github.com/mozilla/twemoji-colr
-[44]: https://github.com/SethFalco
-[45]: https://fosstodon.org/@sethi
-[46]: https://www.linkedin.com/in/sethfalco/
-[47]: /news/author/seth/
-[48]: https://www.freecodecamp.org/learn/
+[30]: https://danklammer.com/
+[31]: https://modernfontstacks.com/
+[32]: https://github.com/system-fonts/modern-font-stacks
+[33]: https://github.com/SethFalco
+[34]: https://fosstodon.org/@sethi
+[35]: https://www.linkedin.com/in/sethfalco/
+[36]: /news/author/seth/
+[37]: https://www.freecodecamp.org/learn/
