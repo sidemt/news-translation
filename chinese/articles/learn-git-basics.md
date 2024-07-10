@@ -1,5 +1,5 @@
 ---
-title: Learn Git Fundamentals – A Handbook on Day-to-Day Development Tasks
+title: 学习 Git 基础知识 – 日常开发任务手册
 date: 2024-04-03T03:57:39.000Z
 author: Samyak Jain
 authorURL: https://www.freecodecamp.org/news/author/samyak/
@@ -12,177 +12,162 @@ reviewer: ""
 
 <!-- more -->
 
-# Learn Git Fundamentals – A Handbook on Day-to-Day Development Tasks
+# 学习 Git 基础知识 – 日常开发任务手册
 
 ![Samyak Jain](https://www.freecodecamp.org/news/content/images/size/w60/2024/02/profilepic.png)
 
 [Samyak Jain][2]
 
-  ![Learn Git Fundamentals – A Handbook on Day-to-Day Development Tasks](https://www.freecodecamp.org/news/content/images/size/w2000/2024/04/Learn-Git-Basics-Cover-3--1-.png)
+![学习 Git 基础知识 – 日常开发任务手册](https://www.freecodecamp.org/news/content/images/size/w2000/2024/04/Learn-Git-Basics-Cover-3--1-.png)
 
-Welcome to my comprehensive guide on Git, the distributed version control system that has revolutionized collaboration and code management in software development.
+欢迎阅读我关于 Git 的综合指南，Git 是一款分布式版本控制系统，已在软件开发中彻底改变了协作和代码管理。
 
-Whether you're a seasoned developer or just starting your journey in programming, understanding Git is essential to gain proper control over your code, efficiently managing your projects and collaborating with others.
+无论你是经验丰富的开发者，还是刚开始编程之旅，理解 Git 都至关重要，它能帮助你正确控制代码，高效管理项目并与他人协作。
 
-In this tutorial, I'll take you through the fundamentals of Git, covering everything from its basic workflow to advanced branching strategies and rebasing techniques.
+到本指南结束时，您将对 Git 的核心概念有一个扎实的理解，并充满信心且拥有有效使用它在开发工作流中的技能。
 
-By the end of this guide, you'll have a solid understanding of Git's core concepts and be confident and well equipped with the skills to effectively use it in your development workflow.
+## 前提条件
 
-## Prerequisites
+您只需要带上好奇和渴望学习的心态。本指南是专门为初学者设计的，所以不需要有版本控制系统或编程的先验知识。无论您是完全的新手还是有一些编码经验，您都会发现本教程易于理解和跟随。
 
-All you need to bring to the table is a curious and eager-to-learn mindset. This guide is crafted with beginners in mind, so no prior knowledge of version control systems or programming is required. Whether you're a complete novice or have some experience with coding, you'll find this tutorial accessible and easy to follow.
+## **目录**
 
-## **Table of Contents**
+1.  [什么是 Git？][3]  
+    – [与其他版本控制系统的区别][4]  
+    – [三种状态和基本的 Git 工作流程][5]
+2.  [首次 Git 设置][6]
+3.  [在 Git 中获取帮助][7]
+4.  [如何获取 Git 仓库][8]  
+    – [在现有目录中初始化仓库][9]  
+    – [克隆一个现有的 Git 仓库][10]
+5.  [如何记录对仓库的更改][11]
+6.  [在 Git 中查看提交历史][12]
+7.  [在 Git 中撤销操作][13]
+8.  [Git 中的远程仓库][14]
+9.  [在 Git 中打标签][15]
+10.  [Git 别名][16]
+11.  [Git 分支][17]  
+    – [在 Git 中创建新分支][18]  
+    – [了解分支][19]  
+    – [在 Git 中切换到其他分支][20]  
+    – [在 Git 中可视化分支][21]
+12.  [如何管理 Git 中的分支][22]  
+    – [管理已合并的分支][23]  
+    – [重命名分支][24]  
+    – [更改默认分支名称][25]
+13.  [分支工作流程][26]
+14.  [在 Git 中变基][27]
+15.  [结论][28]
 
-1.  [What is Git?][3]  
-    – [Difference from other version control systems][4]  
-    – [The Three States and Basic Git Workflow][5]
-2.  [First-Time Git Setup][6]
-3.  [Get Help in Git][7]
-4.  [How to Get a Git Repository][8]  
-    – [Initialize a Repository in an Existing Directory][9]  
-    – [Clone an Existing Repository in Git][10]
-5.  [How to Record Changes to the Repository][11]
-6.  [View Commit History in Git][12]
-7.  [Undo Things in Git][13]
-8.  [Remote Repositories in Git][14]
-9.  [Tagging in Git][15]
-10.  [Git Aliases][16]
-11.  [Git Branching][17]  
-    – [Create a New Branch in Git][18]  
-    – [Understanding Branches][19]  
-    – [Switch to Another Branch in Git][20]  
-    – [Visualise Branches in Git][21]
-12.  [How to Manage Branches in Git][22]  
-    – [Managing Merged Branches][23]  
-    – [Renaming Branches][24]  
-    – [Changing the Default Branch Name][25]
-13.  [Branching Workflow][26]
-14.  [Rebasing in Git][27]
-15.  [Conclusion][28]
+Git 是一个分布式版本控制系统，帮助你和你的团队有效地协作，同时保留项目的历史记录。它就像是你的代码的时间机器！
 
-## What is Git?
+### Git 与其他版本控制系统有何不同？
 
-Git is a distributed version control system that helps you and your team collaborate effectively while keeping your project's history safe. It's like having a time machine for your code!
+#### 概念上的差异
 
-### What makes Git different from other Version Control Systems?
+Git 与其他工具的最大区别在于它对数据的处理方式。Git 并不是存储文件的更改，而是将数据视为项目的快照系列。也就是说，每次你进行更改并保存（提交）时，Git 都会对你当前所有的文件拍一张快照。如果文件没有变化，Git 只是保留指向之前相同文件的链接。
 
-#### Conceptual Difference
+#### 本地操作
 
-The big thing that sets Git apart from other tools is how it thinks about data. Instead of storing changes to files, Git thinks of its data as a series of snapshots of your project, means, every time you make a change and save it (commit), Git takes a snapshot of all your files at that moment. If a file hasn't changed, Git just keeps a link to the previous identical file.
+使用 Git 时，大部分操作都不需要连接到服务器。因为你在计算机上拥有整个项目的历史记录，所以操作速度非常快。你可以浏览项目历史记录或查看不同版本之间的更改，而无需等待服务器响应。
 
-#### Local Operations
+#### 数据完整性
 
-With Git, most things you do don't need a connection to a server. Because you have the entire project history on your computer, operations are super fast. You can browse project history or see changes between versions without waiting for a server.
-
-#### Data Integrity
-
-Git makes sure nothing gets lost or corrupted. Every file and directory is checksummed, and Git knows if anything changes.
-
-Git uses a SHA-1 hash, a unique code for each version of a file. If any changes are made to the content, even a single character, it will result in a different SHA-1 hash.
+Git 确保没有东西丢失或损坏。每个文件和目录都会被校验，Git 也知道如果有什么发生了变化。
 
 #### Append-Only Model
 
-In Git, almost everything adds data to the project, making it hard to accidentally lose information. Once you commit changes, they are safely stored. Experimenting is less risky with Git.
+在 Git 中，几乎所有操作都是在项目中添加数据，这使得意外丢失信息变得困难。一旦你提交了更改，它们就被安全地存储起来了。使用 Git 进行实验比较安全。
 
-### The Three States and Basic Git Workflow
+### 三种状态和基本的 Git 工作流
 
-Understanding Git's three states—modified, staged, and committed—is essential for effective version control:
+理解 Git 的三种状态——修改、暂存和提交——对有效的版本控制至关重要：
 
--   **Modified**: Changes made to files in your **Working tree** that are not yet committed.
--   **Staged**: Modifications marked for the next commit in the **Staging area** to be included in next commit.
--   **Committed**: Changes permanently stored in the local **Git directory**.
+-   **修改**：对 **工作树** 中的文件进行的更改，这些更改尚未提交。
+-   **暂存**：在 **暂存区** 标记的修改，这些修改将包含在下次提交中。
+-   **提交**：将更改永久存储在本地 **Git 目录** 中。
 
-**Basic Git Workflow**:
+**基本的 Git 工作流**：
 
-1.  **Modify files** in your working tree.
-2.  **Stage changes** you want to include in the next commit.
-3.  **Commit changes**, which permanently saves snapshots to the Git directory.
+1.  **修改文件** 在你的工作树中。
+2.  **暂存更改** 你希望包含在下次提交中的更改。
+3.  **提交更改**，这会将快照永久保存到 Git 目录中。
 
-## First-Time Git Setup
+## 初次 Git 设置
 
-Setting up Git for the first time involves customizing your Git environment to suit your preferences. But first, you'll need to download Git from [Git - Downloads][29] or use the Chocolatey package. Then just follow the installation instructions and you should be good to go.
+第一次设置 Git 涉及自定义你的 Git 环境以满足你的偏好。但首先，你需要从 [Git - Downloads][29] 下载 Git 或者使用 Chocolatey 包管理器。然后，只需按照安装说明操作，你就可以开始使用了。
 
-### Git Configuration
+我们使用 `git config` 工具来自定义我们的 Git 环境。这个工具允许我们获取和设置决定 Git 如何操作的配置变量。这些变量可以存储在三个不同的位置：
 
-We use the `git config` tool to customize our Git environment. This tool allows us to both retrieve and set configuration variables that dictate how Git operates. These variables can be stored in three different locations:
+1.  **系统级配置：**  
+    存储在 `/etc/gitconfig` 文件中，这些设置适用于系统上的所有用户和所有仓库。我们可以使用 `git config` 的 `--system` 选项与该文件交互。
+2.  **用户级配置：**  
+    存储在 `~/.gitconfig` 或 `~/.config/git/config` 中，这些值是特定于您作为用户的。我们可以使用 `git config` 的 `--global` 选项与该文件交互，影响您在系统上处理的所有仓库。
+3.  **仓库级配置：**  
+    存储在特定仓库中的 `.git/config` 文件中，这些设置会覆盖全局配置，只适用于该仓库。
 
-1.  **System-wide Configuration:**  
-    Stored in the `/etc/gitconfig` file, these settings apply to all users on the system and all repositories. We can interact with this file using the `--system` option with `git config`.
-2.  **User-specific Configuration:**  
-    Stored in `~/.gitconfig` or `~/.config/git/config`, these values are specific to you as a user. We can interact with this file using the `--global` option with `git config`, affecting all repositories you work with on your system.
-3.  **Repository-specific Configuration:**  
-    Stored in the `.git/config` file within a specific repository, these settings override global configurations and apply only to that repository.
-
-Each level of configuration overrides values from the previous level. For instance, values in `.git/config` will override those in `~/.gitconfig`.
-
-To view all configuration settings and their sources/origins:
+每个配置级别都会覆盖前一个级别的值。例如，`.git/config` 中的值将覆盖 `~/.gitconfig` 中的值。
 
 ```bash
 $ git config --list --show-origin
 ```
 
-#### How to Configure your identity in Git
+#### 如何在 Git 中配置您的身份
 
-Identity in Git is used for attributing commits properly. Let's set up your user name and email address.
+Git 中的身份用于正确归属提交。让我们设置您的用户名和电子邮件地址。
 
 ```bash
 $ git config --global user.name "Your Name"
 $ git config --global user.email "your.email@example.com"
 ```
 
-If you need to override this for specific projects, you can omit the `--global` option when setting the values, and they'll only apply to that particular repository.
+如果需要为特定项目覆盖这些设置，可以在设置值时省略 `--global` 选项，这样它们只会应用于那个特定的版本库。
 
-#### How to Configure Your Default Text Editor
+#### 如何配置默认文本编辑器
 
-After configuring your identity, it's important to set up your default text editor in Git. This text editor will be used when Git needs you to input messages, such as when writing commit messages or resolving merge conflicts.
+在配置您的身份之后，设置 Git 的默认文本编辑器也很重要。当 Git 需要您输入信息时，例如编写提交信息或解决合并冲突时，就会用到这个文本编辑器。
 
-By default, Git uses your system's default text editor. However, if you prefer to use a different text editor, such as Emacs, you can set it up like this:
+默认情况下，Git 使用系统默认的文本编辑器。但是，如果您更喜欢使用其他文本编辑器，例如 Emacs，可以这样设置：
 
 ```bash
 $ git config --global core.editor "emacs"
 ```
 
-On Windows systems, setting up a different text editor requires specifying the full path to its executable file. For example, if you want to use Notepad++, you might use a command like this:
-
-```bash
-$ git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+在 Windows 系统中，设置不同的文本编辑器需要指定其可执行文件的完整路径。例如，如果您想使用 Notepad++，可以使用类似这样的命令：
 ```
 
-Make sure you provide the correct path to the executable file of your text editor.
+确保提供正确路径至文本编辑器的可执行文件。
 
-By the way, these – `"-multiInst -notabbar -nosession -noPlugin"` – are options used to customize the behavior of Notepad++ when it is launched by Git.
+顺便提一下，这些 – `"-multiInst -notabbar -nosession -noPlugin"` – 是 Git 启动 Notepad++ 时用来定制其行为的选项。
 
-#### How to Change default branch name in Git (optional)
+#### 如何更改 Git 中的默认分支名称（可选）：
 
-By default, when you initialize a new repository with `git init`, Git creates a branch named `master`. But from Git version 2.28 onwards, you have the option to set a different name for the initial branch.
+默认情况下，当你使用 `git init` 初始化一个新的仓库时，Git 会创建一个名为 `master` 的分支。但从 Git 版本 2.28 开始，你可以选择为初始分支设置一个不同的名称。
 
 ```bash
 $ git config --global init.defaultBranch main
 ```
 
-changes the default branch name to 'main' globally
+将默认分支名称全局更改为 'main'
 
-#### How to Check Configuration/settings in Git
+#### 如何检查 Git 中的配置/设置
 
-You can view your Git configuration using:
+你可以使用以下命令查看您的 Git 配置：
 
 ```bash
 $ git config --list
-$ git config user.name  # To check a specific setting (e.g., user name):
+$ git config user.name  # 检查特定设置 (例如用户名)：
 ```
 
-The `git config --list` command lists all the configuration settings Git can find at that moment.
+`git config --list` 命令会列出此刻 Git 能找到的所有配置设置。
 
-## How to Get Help in Git
+## 如何在 Git 中获取帮助
 
-There are three equivalent ways to get detailed help for any Git command:
+有三种等效的方法可以获取任何 Git 命令的详细帮助：
 
-1.  Git Help Command: `$ git help <verb>`
-2.  Using the `--help` Option: `$ git <verb> --help`
-3.  Manual pages (manpages): `$ man git-<verb>`
-
-Replace the `<verb>` with whatever command you need help with. For example, to get help for the `config` command, you can type:
+1.  Git 帮助命令: `$ git help <verb>`
+2.  使用 `--help` 选项: `$ git <verb> --help`
+3.  手册页 (man pages): `$ man git-<verb>`
 
 ```bash
 $ git help config
@@ -190,567 +175,517 @@ or
 $ man git-config
 ```
 
-These commands work offline as well, which is handy.
+这些命令离线也能使用，非常方便。
 
-If you need quick, concise information about the available options for a Git command, you can use the `-h` option:
+如果你需要快速、简明地了解 Git 命令的可用选项，可以使用 `-h` 选项：
 
 ```bash
-$ git add -h    # This will display options available for the add command
+$ git add -h    # 这将显示 add 命令的可用选项
 ```
 
-## How to Get a Git Repository
+## 如何获取一个 Git 仓库
 
-To start using Git, you typically obtain a Git repository. There are essentially two main ways to get started:
+要开始使用 Git，你通常需要获取一个 Git 仓库。基本上有两种主要方式来开始：
 
-### 1\. How to Initialize a Repository in an Existing Directory in Git
+### 1\. 如何在现有目录中初始化一个 Git 仓库
 
-Open a terminal or command prompt. Use the `cd` command to change the directory to your project's location: `cd /path/to/your/project`.
+打开一个终端或命令提示符。使用 `cd` 命令将目录更改到你项目的位置：`cd /path/to/your/project`。
 
-Once you're in your project directory, initialize a Git repository by running:
+一旦进入项目目录，通过运行以下命令初始化一个 Git 仓库：
 
 ```bash
 $ git init
 ```
 
-This command creates a new subdirectory named `.git` where Git stores all the necessary files for your Git repository. At this point, none of your project files are being tracked yet.
+这个命令会创建一个名为 `.git` 的新子目录，Git 会在其中存储所有必要的文件来管理你的 Git 仓库。此时，你的项目文件还没有被跟踪。
 
-Now, Suppose you have certain files that you want Git to start tracking:
-
-```bash
-$ git add *.py        # Add all Python files
-$ git add README.md   # Add README file
-$ git commit -m 'Initial commit'
+现在，假设你有某些文件想让 Git 开始跟踪：
 ```
 
-`git add` adds files to the staging area indicating that you want to include them in the next commit, and then commit the changes. The `-m` flag allows you to add a descriptive message to the commit.
+`git add` 添加文件到暂存区，表示你想在下一个提交中包含它们，然后提交更改。 `-m` 标志允许你为提交添加描述性信息。
 
-### 2. How to Clone an Existing Repository in Git
+### 2\. 如何在 Git 中克隆一个现有的仓库：
 
-The second way to obtain a Git repository is by cloning an existing one. This is useful when you want to work on a project that already exists elsewhere (for example, a project you'd like to contribute to).
+第二种获取 Git 仓库的方法是克隆一个现有的仓库。当你想要在已经存在于别处的项目上工作时（例如，你希望为一个项目做贡献），这很有用。
 
-**Note:** When you clone a repository, Git retrieves a full copy of nearly all data that the server has. This includes every version of every file for the history of the project. This means you'll have a complete copy of the repository's history on your local machine.
+**注意：** 当你克隆一个仓库时，Git 会检索服务器所拥有的几乎所有数据的完整副本。这包括项目历史中每个文件的每个版本。这意味着你将在本地机器上拥有仓库历史的完整副本。
 
-To clone a repo, Use the `git clone` command followed by the URL of the repo you want to clone. For example, to clone the grok-1 repository, you can use:
+要克隆一个仓库，使用 `git clone` 命令并在其后附上你想要克隆的仓库的 URL。例如，要克隆 grok-1 仓库，你可以使用：
 
 ```bash
 $ git clone https://github.com/xai-org/grok-1.git
 ```
 
-This creates a directory named grok-1, initializes a `.git` directory inside it, and pulls down all the data for that repository.
+这将创建一个名为 grok-1 的目录，在其中初始化一个 `.git` 目录，并拉取该仓库的所有数据。
 
-BTW, `.git` is just a convention to signify that the URL points to a Git repository. You can use it or not, it doesn't matter.
-
-If you want to clone into a directory with a different name, you can specify it. To clone the grok-1 repo into a directory named "chatgpt" instead of "grok-1", do this:
+如果你想克隆到一个不同名称的目录，可以指定它。要将 grok-1 仓库克隆到名为 "chatgpt" 的目录中，而不是 "grok-1"，可以这样做：
 
 ```bash
 $ git clone https://github.com/xai-org/grok-1.git chatgpt
 ```
 
-Git provides various transfer protocols you can use for cloning repos. The example above uses the `https://` protocol, but you may also see `git://` or `user@server:path/to/repo.git`, which uses the SSH transfer protocol.
+Git 提供了各种传输协议可用于克隆仓库。上例使用了 `https://` 协议，但你也可能见到 `git://` 或 `user@server:path/to/repo.git`，它们使用的是 SSH 传输协议。
 
-## How to Record Changes to the Repository
+## 如何记录对仓库的更改
 
-Now that you have a Git repository set up, you'll often need to make changes and record those changes in your repository. The process involves tracking files, staging changes, and committing snapshots. Let's explore the steps involved:
+现在你已经建立了一个 Git 仓库，通常需要进行更改并在你的仓库中记录这些更改。这个过程涉及跟踪文件、暂存更改和提交快照。让我们探索涉及的步骤：
 
 ![lifecycle](https://www.freecodecamp.org/news/content/images/2024/03/lifecycle.png)
 
-pic credit - https://git-scm.com/
+图片来源 - https://git-scm.com/
 
-### 1. How to Check the Status of Your Files in Git
+### 1. 如何检查 Git 中文件的状态
 
-When working with a Git repository, it's crucial to understand the status of your files.
+在处理 Git 仓库时，了解文件的状态是至关重要的。
 
-Git categorizes files into two types: tracked and untracked. Tracked files are those that Git recognizes, either because they were part of the last snapshot (commit) or have been staged. Untracked files are everything else—files that Git is not currently monitoring. To check the status of your repository:
+Git 将文件分类为两种类型：已跟踪和未跟踪。已跟踪文件是 Git 识别的文件，要么是因为它们是上一次快照（提交）的一部分，要么是已经暂存的文件。未跟踪文件则是所有其他文件——Git 当前未监视的文件。要检查你的仓库状态：
 
-```bash
-$ git status
-```
+该命令提供关于当前分支、其同步状态以及你的文件状态的全面信息。
 
-This command provides comprehensive information about the current branch, its synchronization status, and the status of your files.
+`git status` 还会建议你可以采取的操作。例如，当文件已被修改但未暂存提交时，`git status` 建议使用 `git add <file>` 将其暂存。它还建议使用 `git checkout -- <file>` 来放弃工作目录中的更改。这些建议通过提供快速访问相关的 Git 命令来简化你的工作流程。
 
-`git status` also suggests actions you can take. For instance, when files are modified but not staged for commit, `git status` suggests using `git add <file>` to stage them. It also suggests using `git checkout -- <file>` to discard changes in the working directory. These suggestions streamline your workflow by providing quick access to relevant Git commands.
+此外，`git status` 提供了一种简短状态模式（`git status -s`），它使用类似 M（修改）、A（新增）和 ??（未跟踪）这样的符号来表示文件状态，从而呈现出更简洁的视图。
 
-Also, `git status` offers a Short Status mode (`git status -s`), which presents a more concise view of your changes using symbols like M (modified), A (added), and ?? (untracked) to represent file statuses.
+### 2\. 如何在 Git 中跟踪新文件
 
-### 2\. How to Track New Files in Git
+当你在项目中创建一个新文件时，Git 最初会将其视为未跟踪文件。要开始跟踪新文件，你需要使用 `git add` 命令将其添加到暂存区。
 
-When you create a new file in your project, Git initially considers it untracked. To start tracking a new file, you need to add it to the staging area using the `git add` command.
+例如，让我们为项目创建一个名为 `index.html` 的新文件，并将其添加到暂存区：
 
-For instance, let's create a new file called `index.html` for our project and add it to the staging area:
+在添加完文件之后，再次运行 `git status` 将显示 `index.html` 文件现在已经被跟踪并且已暂存（staged）以供提交。
 
-```bash
-$ touch index.html
-$ git add index.html
-```
+### 3\. 如何在 Git 中暂存修改过的文件
 
-After adding, running `git status` again will show that the `index.html` file is now tracked and staged for commit.
-
-### 3\. How to Stage Modified Files in Git
-
-If you modify an existing tracked file, you need to stage the changes using `git add`. Let's say we modify an existing file called `styles.css`
+如果你修改了一个已经被跟踪的文件，你需要使用 `git add` 来暂存这些更改。假设我们修改了一个叫做 `styles.css` 的已存在文件
 
 ```bash
 $ vim styles.css
 ```
 
-After making changes, stage the file:
+做出修改后，暂存该文件：
 
 ```bash
 $ git add styles.css
 ```
 
-Now, when you check the status, you'll see both the modified file and the new file staged for commit.
+现在，当你检查状态时，你会看到修改过的文件和新的文件都已暂存，等待提交。
 
-### 4\. How to Ignore Files in Git
+### 4\. 如何在 Git 中忽略文件
 
-Often, there are files or directories within a project that aren't intended for Git tracking. These might include log files, build artifacts, or sensitive information like local environment settings (such as \*.env or config.json). You can specify these files to be ignored using a `.gitignore` file.
+通常在一个项目中会有一些文件或目录不打算被 Git 跟踪。这些文件可能包括日志文件、构建产物，或像本地环境设置（例如 \*.env 或 config.json）这样的敏感信息。你可以使用 `.gitignore` 文件来指定要忽略的这些文件。
 
-Create a `.gitignore` file :
+创建一个 `.gitignore` 文件：
 
 ```bash
 $ nano .gitignore
 ```
 
-List the patterns of files or directories you want to ignore.:
+列出你想忽略的文件或目录的模式：
 
 ```bash
 $ echo '*.log' >> .gitignore
 $ echo 'build/' >> .gitignore
 ```
 
-Here, we're telling Git to ignore all files with a `.log` extension and the `build/` directory.
 
-****Note:**** Files already tracked by Git before being added to the `.gitignore` file will remain tracked. To remove them, you'll need to manually untrack them using Git commands.
 
-Here are some patterns you can use to work more effectively in Git.
+****注意：**** 在被添加到 `.gitignore` 文件之前已经被 Git 跟踪的文件将会继续被跟踪。要移除它们，您需要使用 Git 命令手动取消跟踪它们。
 
--   ****Target individual files or file extensions precisely:**** For example, `test.txt` ignores only that specific file, while `*.log` ignores all files ending with `.log`.
--   ****Wildcards for broader matches:**** The asterisk (`*`) wildcard matches any number of characters. For example, `*.doc` ignores all files with the `.doc` extension, regardless of their name.
+以下是一些可以让您更有效地使用 Git 的模式。
 
-### 5. How to View Changes in Git
+-   ****准确地目标定位单个文件或文件扩展名：**** 例如，`test.txt` 仅忽略那个特定的文件，而 `*.log` 忽略所有以 `.log` 结尾的文件。
+-   ****通配符用于更广泛的匹配：**** 星号 (`*`) 通配符可以匹配任何数量的字符。例如，`*.doc` 忽略所有扩展名为 `.doc` 的文件，无论其名称如何。
 
-If you want to see the exact changes you've made to your files before committing, you can use the `git diff` command.
+### 5. 如何查看 Git 中的更改
 
-To see unstaged changes:
+如果您想在提交之前查看对文件的具体更改，可以使用 `git diff` 命令。
+
+要查看未暂存的更改：
 
 ```bash
 $ git diff 
 ```
 
-And to see staged changes:
+要查看已暂存的更改：
 
 ```bash
 $ git diff --cached README.md
 ```
 
-`git diff` provides a detailed view of the actual modifications. Use `git diff <filename>` to focus on changes within a particular file.
+`git diff` 提供了实际修改的详细视图。使用 `git diff <filename>` 以关注特定文件内的更改。
 
-### 6. How to Commit Changes
+当你准备好提交更改时，使用 `git commit` 命令。这会打开你的文本编辑器，让你提供一个提交信息。或者，你可以使用 `-m` 参数直接添加提交信息：
 
-When you are ready to commit your changes, use the `git commit` command. This opens your text editor for you to provide a commit message. Alternatively, you can use the `-m` flag to add a commit message directly:
-
-Once you have staged the changes you want to include in the commit, you can commit them using `git commit`
+一旦你已经暂存了你想包含在提交中的更改，你可以使用 `git commit` 提交它们
 
 ```bash
-$ git commit -m "Your commit message here"
+$ git commit -m "在此输入你的提交信息"
 ```
 
-### 7. How to Remove Files in Git
+### 7. 如何在 Git 中删除文件
 
-If you need to remove a file from Git's tracking, you can use `git rm`. It remove the file from both the repository and working directory. Suppose you want to remove a file named `temp.txt`:
+如果你需要从 Git 的跟踪中删除一个文件，你可以使用 `git rm`。它会从仓库和工作目录同时删除该文件。假设你要删除一个名为 `temp.txt` 的文件：
 
 ```bash
 $ git rm temp.txt
 ```
 
-If you only want to remove it from the repository but keep it in the working directory, use the `--cached` option:
+如果你只想从仓库中删除它，但保留在工作目录中，使用 `--cached` 选项：
 
 ```bash
 $ git rm --cached temp.txt
 ```
 
-### 8. How to Move (or Rename) Files in Git
+### 8. 如何在 Git 中移动（或重命名）文件
 
-Git doesn't explicitly track file movements. But you can use `git mv` to rename or move files within your repository. For example, to rename `old_file.txt` to `new_file.txt`:
+Git 不会显式地跟踪文件的移动。但你可以使用 `git mv` 来重命名或移动仓库中的文件。例如，要将 `old_file.txt` 重命名为 `new_file.txt`：
 
 ```bash
 $ git mv old_file.txt new_file.txt
 ```
 
-This command will stage the rename, and it will be reflected in the next commit.
 
-It is equivalent to manually moving the file, followed by using `git rm` to remove the old file, and then `git add` to add the new file. `git mv` basically consolidates these steps into a single command.
+相当于手动移动文件，然后使用 `git rm` 删除旧文件，再使用 `git add` 添加新文件。`git mv` 基本上将这些步骤合并为一个命令。
 
-These commands form the basic workflow for making changes, staging them, and committing them to your Git repository.
+这些命令构成了在 Git 仓库中进行更改、暂存和提交的基本工作流程。
 
-## How to View Commit History in Git
+## 如何查看 Git 中的提交历史
 
-After creating multiple commits or cloning a repository, the `git log` command allows you to examine the commit history.
+在创建多个提交或克隆仓库后，`git log` 命令允许您查看提交历史。
 
-By default, it lists commits in reverse chronological order, displaying each commit with its SHA-1 checksum, author's name and email, date, and commit message.  
-Now let's see how can we enhance this output:
+默认情况下，它按时间倒序列出提交信息，显示每个提交的 SHA-1 校验和、作者姓名和电子邮件、日期和提交信息。  
+现在让我们看看如何增强这个输出：
 
-### How to View Commit Differences in Git
+### 如何查看 Git 中的提交差异
 
-To view the difference introduced in each commit, you can use the `-p` or `--patch` option:
-
-```bash
-$ git log -p -2    # -2 is used to view the differences introduced in each of the last two commits
-```
-
-### How to Display Statistics in Git
-
-The `--stat` option provides summarized statistics for each commit, including the modified files, lines added/deleted, and a summary.
+要查看每个提交引入的差异，您可以使用 `-p` 或 `--patch` 选项：
 
 ```bash
-$ git log --stat
+$ git log -p -2    # -2 用于查看最后两个提交中引入的差异
 ```
 
-### How to Customize Git Log Output Format
+### 如何在 Git 中显示统计信息
 
-The `--pretty` option allows you to alter the log output format. Various options are available for different formats:
+`--stat` 选项提供了每个提交的总结统计信息，包括修改的文件、添加/删除的行数和一个汇总。
 
--   `oneline`: Concise, single-line summary of each commit.
--   `short`: Default format with author, date, and message.
--   `full`: Detailed format with commit hash, author, date, message, and diff.
--   `fuller`: More detailed format, including full file paths.
--   `format`: Customize the output using format specifiers.
+
+### 如何自定义 Git 日志输出格式
+
+`--pretty` 选项允许你改变日志的输出格式。不同的格式选项包括：
+
+-   `oneline`: 每个提交的简洁单行摘要。
+-   `short`: 默认格式，包含作者、日期和消息。
+-   `full`: 详细格式，包含提交哈希、作者、日期、消息和差异。
+-   `fuller`: 更详细的格式，包括完整的文件路径。
+-   `format`: 使用格式说明符自定义输出。
 
 ```bash
 $ git log --pretty=oneline
 ```
 
-**Useful format specifiers for** `--pretty=format`:
+**`--pretty=format` 的有用格式说明符**：
 
--   `%h:` Abbreviated commit hash
--   `%an:` Author name
--   `%ae:` Author email
--   `%ad:` Author date
--   `%s:` Subject (commit message)
+-   `%h:` 缩略的提交哈希
+-   `%an:` 作者名称
+-   `%ae:` 作者电子邮箱
+-   `%ad:` 作者日期
+-   `%s:` 主题（提交消息）
 
 ```bash
 $ git log --pretty=format:"%h %an %ad %s"
 ```
 
-**ASCII Graph**:
+**ASCII 图形**：
 
-Using `--graph`, you can also visualize branch and merge history.
+使用 `--graph`，你还可以可视化分支和合并历史。
 
 ```bash
 $ git log --pretty=format:"%h %s" --graph
 ```
 
-### How to Limit Git Log Output
+### 如何限制 Git 日志输出
 
-In addition to formatting options, `git log` offers various limiting options to refine the displayed commit history.
+除了格式选项，`git log` 提供了各种限制选项来优化显示的提交历史记录。
 
--   `-<n>:` Shows only the last n commits.
--   `--since, --until:` Limits commits to those made after/before the specified date.
--   `--author:` Shows commits only by a specific author.
--   `--grep:` Filters commits by a keyword in the commit messages.
--   `-S:` Shows commits changing
-
-****Example Usage:**** View the last 3 commits by author Abbey since a certain date, with patch details:
+****示例用法:**** 查看作者为 Abbey 自某个日期以来的最近 3 次提交，并显示补丁详细信息：
 
 ```bash
 $ git log --author="Abbey" --since="2024-01-01" -p -3
 ```
 
-## How to Undo Things in Git
+## 如何在 Git 中撤销操作
 
-Undoing changes is a common need in Git, and several options are available for this purpose.
+在 Git 中撤销更改是一个常见需求，并且为此目的提供了多种选项。
 
-### How to Undo a Commit in Git
+### 如何撤销 Git 中的提交
 
-If you've committed too early or need to make additional changes to the last commit, use this command:
+如果你提交得太早或者需要对上一次提交进行额外的更改，可以使用以下命令：
 
 ```bash
 $ git commit --amend
 ```
 
-This opens the commit message editor allowing you to modify the message. If no changes were made since the last commit, it simply allows you to edit the commit message.
+这将打开提交消息编辑器，让你修改消息。如果自上次提交以来没有进行更改，它只是允许你编辑提交消息。
 
-****Note****: Only amend commits that are still local and haven't been pushed yet to avoid issues for collaborators.
+****注意****: 只应修改尚未推送且仍然在本地的提交，以避免让协作人员遇到问题。
 
-### How to Unstage a Staged File with `git reset`
+### 如何使用 `git reset` 取消暂存的文件
 
-To unstage a file that was accidentally included, you can use the `git reset HEAD <file>` command. For example:
+如果一个文件被错误地包含在暂存区，你可以使用 `git reset HEAD <file>` 命令取消暂存。例如：
 
 ```bash
 $ git reset HEAD CONTRIBUTING.md 
 ```
 
-The file is unstaged, allowing you to make further changes without committing the unintended ones.
+该文件将被取消暂存，允许你在不提交意外包含的更改的情况下进行进一步更改。
 
-### How to Unmodify a Modified File with `git checkout`
-
-Suppose you made some modifications to files that you later realize you don't want to keep. Use `git checkout -- <file>` to discard the changes made to a file and revert it back to its previous state.
+假设你对文件做了一些修改，但后来你意识到不想保留这些修改。使用 `git checkout -- <file>` 丢弃对文件所做的更改，并将其恢复到先前的状态。
 
 ```bash
 $ git checkout -- CONTRIBUTING.md
 ```
 
-This will replace the modified file with the last staged or committed version.
+这将用最后一个暂存或提交的版本替换已修改的文件。
 
-### Undoing Things with `git restore`
+### 使用 `git restore` 撤销操作
 
-Let's explore the alternatives introduced by Git version 2.23.0, `git restore`, which serves as an alternative to `git reset` for many undo operations.
+让我们来探讨 Git 2.23.0 版本引入的替代方案 `git restore`，它可以作为许多撤销操作中 `git reset` 的替代方案。
 
-#### How to unstage a staged file with `git restore`
+#### 如何使用 `git restore` 取消暂存的文件
 
-If you accidentally stage a file that you didn't intend to commit, you can use `git restore --staged <file>` to unstage it.
+如果你不小心暂存了一个并不想提交的文件，可以使用 `git restore --staged <file>` 将其取消暂存。
 
 ```bash
 $ git restore --staged CONTRIBUTING.md   
 ```
 
-The file is unstaged, similar to `git reset HEAD <file>`, allowing you to make further changes without committing the unintended ones.
+文件被取消暂存，这类似于 `git reset HEAD <file>`，允许你在不提交意外更改的情况下继续进行修改。
 
-#### How to unmodify a modified file with `git restore`
+#### 如何使用 `git restore` 丢弃已修改的文件
 
-To discard changes made to a file in the working directory, use `git restore <file>`:
+要丢弃对工作目录中某个文件所做的更改，使用 `git restore <file>`：
 
-```bash
-$ git restore CONTRIBUTING.md
-```
 
-Similar to `git checkout -- <file>`, this command discard the changes made to the specified file, reverting it back to the state it was in at the last commit.
 
-****Important Note:**** Use commands like `git reset`, `git checkout --`,`git restore` cautiously as they can discard local changes permanently. Use these commands when you're certain that the changes are not needed and you don't have any unsaved local changes.
+类似于 `git checkout -- <file>`，此命令放弃对指定文件所做的更改，将其恢复到最后一次提交时的状态。
 
-**Alternatives:** Stashing and branching are alternative methods to temporarily set aside changes without discarding them entirely. These methods are safer if you're unsure about discarding changes.
+****重要提示：**** 使用 `git reset`、`git checkout --`、`git restore` 等命令时要谨慎，因为它们可能永久丢失本地更改。请在确定不需要更改且没有任何未保存的本地更改时使用这些命令。
 
-## How to Work with Remotes in Git
+**替代方法：** 暂存（stashing）和分支（branching）是临时搁置更改而不完全丢弃它们的替代方法。如果您不确定是否要丢弃更改，这些方法更安全。
 
-Remote repositories are versions of your project hosted on the internet or a network. Collaborating with others involves managing these remote repositories, including adding, removing, and inspecting them. Let's learn how to manage them effectively.
+## 如何管理 Git 中的远程仓库
 
-### How to Show Your Remotes in Git
+远程仓库是托管在互联网或网络上的项目版本。与他人协作涉及管理这些远程仓库，包括添加、删除和检查它们。让我们学习如何有效地管理它们。
 
-To start, let's see which remote servers are configured for our project using:
+### 如何显示 Git 中的远程仓库
 
-```bash
-$ git remote
-```
+首先，让我们看看项目中配置了哪台远程服务器，使用命令：
 
-This command lists the shortnames of all remote handles we've specified. For instance, if we've cloned a repository, we'll typically see `origin`, the default name Git assigns to the server we cloned from.
+这个命令列出了我们指定的所有远程仓库的简称。例如，如果我们克隆了一个仓库，通常会看到 `origin`，这是 Git 为我们克隆的服务器分配的默认名称。
 
-Adding the `-v` option provides additional details, such as the URLs associated with each remote.
+添加 `-v` 选项会提供额外的细节，比如每个远程仓库关联的 URL。
 
 ```bash
 $ git remote -v
 ```
 
-This displays both the fetch and push URLs for each remote, allowing us to understand where our project is hosted and how we interact with it.
+这将显示每个远程仓库的 fetch 和 push URL，让我们了解我们的项目托管在哪里以及如何与它交互。
 
-### How to Add Remote Repositories in Git
+### 如何在 Git 中添加远程仓库
 
-To explicitly add a new remote repository, use `git remote add <shortname> <url>`:
+要显式添加一个新的远程仓库，使用 `git remote add <shortname> <url>`：
 
 ```bash
 $ git remote add example https://github.com/example/example.git
 ```
 
-Here, we've added a remote named `example` with the specified URL. This allows us to reference this remote repository using the shortname `example` in our commands.
+这里，我们添加了一个名为 `example` 的远程仓库，并指定了 URL。这允许我们在命令中使用简称 `example` 来引用这个远程仓库。
 
-### How to Fetch and Pull from Remotes in Git
+### 如何在 Git 中 fetch 和 pull 远程仓库的数据
 
-To fetch data from a remote repository, we use the `git fetch` command followed by the remote name:
+要从远程仓库中 fetch 数据，我们使用 `git fetch` 命令，后跟远程仓库的名称：
 
 ```bash
-$ git fetch origin // Here we are not specifying any particular branch.
+$ git fetch origin // 这里我们没有指定任何特定的分支。
 ```
 
-It downloads any new changes from the `origin` remote repository to our local repository, allowing us to stay up-to-date with the latest developments.
-
-Alternatively, if we want to fetch and merge changes from a remote branch into our current branch in a single step, we use the `git pull` command:
+或者，如果我们希望在一个步骤中从远程分支拉取并合并更改到当前分支，我们使用 `git pull` 命令：
 
 ```bash
 $ git pull origin master
 ```
 
-Here, we're specifically pulling changes from the `master` branch of the `origin` remote repository into our current branch.
+在这里，我们具体是将 `origin` 远程仓库的 `master` 分支上的更改拉取到我们的当前分支中。
 
-### How to Push Changes to Remotes in Git
+### 如何将更改推送到 Git 中的远程仓库
 
-To share our work with others, we push our changes to a remote repository using:
+为了与他人共享我们的工作，我们使用以下命令将更改推送到远程仓库：
 
 ```bash
 $ git push origin main
 ```
 
-In this example, we're pushing our local changes to the `main` branch of the `origin` remote repository.
+在这个例子中，我们将本地更改推送到 `origin` 远程仓库的 `main` 分支上。
 
-### How to Inspect a Remote in Git
+### 如何检查 Git 中的远程仓库
 
-Lastly, we can inspect a remote repository to gather more information about it using:
+最后，我们可以检查一个远程仓库，以收集更多关于它的信息，使用如下命令：
 
 ```bash
 $ git remote show origin
 ```
 
-This command displays details such as the fetch and push URLs, the tracked branches, and local branch configurations associated with the `origin` remote repository.
+该命令显示的信息包括获取和推送的 URL、跟踪的分支，以及与 `origin` 远程仓库相关的本地分支配置。
 
-### How to Rename Remotes in Git
+### 如何在 Git 中重命名远程仓库
 
-Now Suppose we want to rename a remote's shortname from `example` to `new-example`:
+现在假设我们想将一个远程仓库的简短名从 `example` 重命名为 `new-example`：
 
-```bash
-$ git remote rename example new-example
-```
+### 如何在 Git 中删除远程仓库
 
-### How to Remove Remotes in Git
-
-If, for some reason, we no longer need a remote repository and want to remove it from our project:
+如果由于某种原因，我们不再需要一个远程仓库，并希望将其从项目中删除：
 
 ```bash
 $ git remote remove new-example
-or
+或
 $ git remote rm new-example
 ```
 
-After removal, the remote-tracking branches and associated configuration settings are also deleted.
+删除后，远程跟踪分支和相关的配置设置也会被删除。
 
-## Tagging in Git
+## Git 中的标签
 
-Tagging in Git is a fundamental feature allowing developers to mark specific points in a repository's history as significant. Typically, tags are used to denote release points, such as v1.0, v2.0, and so forth.
+在 Git 中，标签是一个基本功能，允许开发人员将仓库历史中的特定点标记为重要节点。通常，标签用于标注发布点，例如 v1.0、v2.0 等等。
 
-### How to List Existing Tags in Git
+### 如何列出 Git 中的现有标签
 
-Imagine you're working on a project with multiple release versions. To list existing tags:
+假设您正在开发一个有多个发行版本的项目。要列出现有标签：
 
 ```bash
 $ git tag
 ```
 
-Also, you can search for tags matching a specific pattern using the `-l` or `--list` option. For Example:
+此外，您可以使用 `-l` 或 `--list` 选项搜索符合特定模式的标签。例如：
 
 ```bash
 $ git tag -l "v2.0*"
 ```
 
-This command will list tags like `v2.0`, `v2.0-beta`, and so on, matching the specified pattern.
+此命令将列出类似 `v2.0`、`v2.0-beta` 等符合指定模式的标签。
 
-### How to Create Tags in Git
+### 如何在 Git 中创建标签
 
-Git supports two types of tags: lightweight and annotated.
+Git 支持两种类型的标签：轻量标签和附注标签。
 
-#### Lightweight Tags
-
-Use lightweight tags when you want to mark a specific commit without adding any additional information. Example:
+使用轻量级标签时，只需在特定的提交上标记，而不添加任何附加信息。例如：
 
 ```bash
 $ git tag v1.1-lw
 ```
 
-To view commit information associated with this tag, use:
+要查看与此标签关联的提交信息，请使用：
 
 ```bash
 $ git show v1.1-lw
 ```
 
-Lightweight tags display commit checksum only 
+轻量级标签仅显示提交校验和
 
-#### Annotated Tags
+#### 注解标签
 
-Annotated tags, on the other hand, contain additional info such as tagger information, date, and a tagging message.
+另一方面，注解标签包含诸如标记者信息、日期和标记消息等附加信息。
 
-Creating an annotated tag involves using the `-a` option with the `git tag` command, along with a tagging message. e.g:
+创建注解标签时，需要使用带有 `-a` 选项的 `git tag` 命令，并包含标记消息。例如：
 
 ```bash
 $ git tag -a v2.0 -m "Release version 2.0"
 ```
 
-To view detailed information about this tag, including the commit it points to and the tagging message, use:
+要查看此标签的详细信息，包括它指向的提交和标记消息，请使用：
 
 ```bash
 $ git show v2.0
 ```
 
-### How to tag an older commit in Git
+### 如何在 Git 中标记较旧的提交
 
-Sometimes, you might forget to tag a specific commit. Not to worry, you can tag it later by specifying the commit checksum
+有时，您可能忘记给特定的提交打标签。不用担心，您可以通过指定提交校验和值来稍后标记它。
 
-Example: suppose you forgot to tag a commit with ID `abcdefg`. You can tag it as follows:
+例如：假设您忘记了标记 ID 为 `abcdefg` 的提交。您可以按如下方式标记它：
 
 ```bash
 $ git tag -a v1.2 abcdefg
 ```
 
-This command tags the specified commit as `v1.2`
+#### 如何在 Git 中将标签推送到远程仓库
 
-#### How to Push Tag to a Remote repo in Git
-
-To push a specific tag to a remote server, you can use:
+要将特定标签推送到远程服务器，你可以使用：
 
 ```bash
 $ git push origin <tagname>
 ```
 
-If you have multiple tags and want to push them all at once, you can use the `--tags` option:
+如果你有多个标签并且想要一次性推送它们，你可以使用 `--tags` 选项：
 
 ```bash
 $ git push origin --tags
 ```
 
-#### How to Delete Tags in Git
+#### 如何在 Git 中删除标签
 
-To delete a tag locally (removing from local repo):
+要在本地删除一个标签（从本地仓库移除）：
 
 ```bash
 $ git tag -d <tagname>
 ```
 
-For Example, to delete a lightweight tag named `v1.4-lw`:
+例如，要删除一个名为 `v1.4-lw` 的轻量级标签：
 
 ```bash
 $ git tag -d v1.4-lw
 ```
 
-On the other hand, you can delete a tag from a remote server in two ways:
+另一方面，你可以通过两种方式从远程服务器删除一个标签：
 
-1.  Using the `git push` command with a refspec:
+1.  使用带有 refspec 的 `git push` 命令：
 
 ```bash
 $ git push origin :refs/tags/v1.1-lw
 ```
 
-This command pushes nothing (`:`) to the remote tag `v1.1-lw`, effectively deleting it.
+这个命令将空内容 (`:`) 推送到远程标签 `v1.1-lw`，从而有效地删除它。
 
-2\.  Using the `--delete` option with `git push`:
+2\. 使用 `git push` 的 `--delete` 选项：
 
 ```bash
 $ git push origin --delete v1.1-lw
 ```
 
-This one directly deletes the tag `v1.1-lw` from the remote server.
+这个直接删除远程服务器上的 `v1.1-lw` 标签。
 
-#### How to Check Out Tags in Git
+#### 如何在 Git 中检出标签
 
-To view the state of files at a specific tag, you can check out that tag:
+要查看特定标签下的文件状态，你可以检出该标签：
 
-```bash
-$ git checkout v2.0
-```
+此命令会将你的仓库置于“分离的 HEAD”状态，在这种状态下你可以查看文件但不能直接进行更改。
 
-This command puts your repository in a "detached HEAD" state, where you can view files but cannot make changes directly.
-
-If you need to work on files at that tag, it's better to create a new branch:
+如果你需要在该标签进行工作，最好创建一个新的分支：
 
 ```bash
 $ git checkout -b v2.0-branch v2.0
 ```
 
-Now you can make changes and commits without altering the original tag.
+现在你可以进行更改和提交，而不会更改原始标签。
 
-## Git Aliases
+## Git 别名
 
-Git aliases are shortcuts or custom commands that you can create to simplify and streamline your Git workflow.  
+Git 别名是你可以创建的快捷方式或自定义命令，用来简化和优化你的 Git 工作流程。
 
-To create a Git alias, you use the `git config` command with the `--global` flag to make the alias available across all your Git repositories.
+要创建 Git 别名，你可以使用 `git config` 命令加上 `--global` 标志，使别名在所有 Git 仓库中都可用。
 
-### Basic Aliases for Common Commands
+### 常用命令的基本别名
 
-You can create aliases for frequently used Git commands to make them easier to remember and type. For example:
+你可以为经常使用的 Git 命令创建别名，以便于记忆和输入。例如：
 
 ```bash
 $ git config --global alias.co checkout
@@ -758,269 +693,246 @@ $ git config --global alias.br branch
 $ git config --global alias.ci commit
 ```
 
-Now, instead of typing out the full commands, you can use shorter aliases like `git co`, `git br`, and `git ci` respectively.
+现在，你可以分别使用简短的别名 `git co`、`git br` 和 `git ci` 代替完整的命令。
 
-You can also **create custom aliases for actions you frequently perform** or for improving command readability. Example:
+你还可以**为你经常执行的操作创建自定义别名**或提高命令的可读性。例如：
 
-```bash
-$ git config --global alias.unstage 'reset HEAD --'
-```
+现在，您可以使用 `git unstage <file>` 来代替 `git reset HEAD -- <file>` 来取消暂存文件。
 
-Now, you can use `git unstage <file>` instead of `git reset HEAD -- <file>` to unstage a file.
+#### 如何在 Git 中组合多个命令
 
-#### How to Combine Multiple Commands in Git
-
-Aliases can also be used to combine multiple Git commands into a single alias. For example, let's create an alias to stage all changes and then commit them with a single command:
+别名也可以用于将多个 Git 命令组合成一个单一的别名。例如，让我们创建一个别名来暂存所有更改，然后用一个命令提交它们：
 
 ```bash
 $ git config --global alias.commitall '!git add -A && git commit'
 ```
 
-Now, running `git commitall` will stage all changes (`git add -A`) and then commit them, saving you time and keystrokes.
+现在，运行 `git commitall` 将暂存所有更改 (`git add -A`) 并提交它们，为您节省时间和按键。
 
-## Git Branching
+## Git 分支
 
-Branches in Git provide a powerful way to manage your project's codebase, allowing for parallel development and experimentation without affecting the main codebase.
+Git 中的分支提供了一种强大的方式来管理您的项目代码库，允许并行开发和实验而不影响主代码库。
 
-Git branching allows you to diverge from the main line of development, work on features or fixes, and then merge your changes back. Unlike many other version control systems, Git's branching model is lightweight and efficient, making branching operations nearly instantaneous.
+Git 分支允许您从主开发线上分离出来，处理功能或修复，然后将您的更改合并回去。与许多其他版本控制系统不同，Git 的分支模型轻量且高效，使得分支操作几乎是瞬间完成的。
 
-### What are Branches in Git?
+### Git 中的分支是什么？
 
-A branch is a lightweight, movable pointer to a commit. The default branch name is often "master," but it's not special – it's like any other branch.
+分支是一个指向提交的轻量级、可移动的指针。默认的分支名称通常是 "master"，但它并不是特别的——它与其他分支一样。
 
-Creating and switching between branches allows you to work on different features simultaneously.
+### 如何在 Git 中创建一个新分支
 
-### How to Create a New Branch in Git
-
-When you want to start working on a new feature or experiment with an idea, you can create a new branch in Git. This new branch serves as a separate line of development, allowing you to make changes without affecting the main branch.
+当你想开始处理一个新功能或试验某个想法时，可以在 Git 中创建一个新分支。这个新分支作为一个独立的开发线，允许你进行更改而不影响主分支。
 
 ```bash
 $ git branch new_feature
 ```
 
-This command creates a new branch named 'new-feature' pointing to the same commit as the current branch. Branches can coexist, and Git keeps a special pointer called `HEAD` to indicate the current branch.
+此命令创建一个名为 'new_feature' 的新分支，指向与当前分支相同的提交。分支可以共存，Git 保持一个名为 `HEAD` 的特殊指针来表示当前分支。
 
-### Understanding Branches
+### 理解分支
 
-Firstly, let's grasp the basics of branches in Git. When you initialize a Git repository, you start with a default branch, usually named 'master' or 'main'. Branches are essentially pointers to commits, enabling you to work on different features or fixes independently.
+首先，让我们理解一下 Git 中的分支基础。当你初始化一个 Git 仓库时，你会从一个默认分支开始，通常命名为 'master' 或 'main'。分支本质上是指向提交的指针，使你能够独立地处理不同的功能或修复。
 
-To view all branches in your repository, use the command:
+要查看仓库中的所有分支，请使用以下命令：
 
 ```bash
 $ git branch
 ```
 
-This will display a list of branches with an asterisk (\*) indicating the currently checked out branch. For additional information like the last commit on each branch, utilize:
+此命令会显示一个分支列表，其中带有星号 (\*) 表示当前检出的分支。要获取每个分支的最后一次提交等附加信息，请使用：
 
-```bash
-$ git branch -v
-```
+### 如何在 Git 中切换到另一个分支
 
-### How to Switch to Another Branch in Git
-
-To switch to an existing different branch, use `git checkout`.
+要切换到一个已存在的不同分支，使用 `git checkout`。
 
 ```bash
 $ git checkout new_feature
 ```
 
-This command switches the 'HEAD' pointer to the 'new-feature' branch, making it the currently active branch.
+这个命令会将 'HEAD' 指针切换到 'new-feature' 分支，使其成为当前活动分支。
 
-To create and switch to a new branch in one operation:
+要在一个操作中创建并切换到一个新分支：
 
 ```bash
 $ git checkout -b <newbranchname>
 ```
 
-In Git version 2.23 onwards, you can use `git switch` instead of `git checkout`.
+在 Git 2.23 版本及之后，你可以使用 `git switch` 替代 `git checkout`。
 
--   Switch to an existing branch: `git switch existing-branch`.
--   Create and switch to new branch: `git switch -c new-branch`.
+-   切换到一个已存在的分支：`git switch existing-branch`。
+-   创建并切换到新分支：`git switch -c new-branch`。
 
-### How to Visualize Branches in Git
+### 如何可视化 Git 中的分支
 
-After creating and switching branches, you can visualize the branch structure using:
+在创建和切换分支之后，你可以使用以下命令可视化分支结构：
 
 ```bash
 $ git log --oneline --decorate --graph --all
 ```
 
-This command displays a concise and graphical representation of the commit history and branch pointers, allowing you to see how branches diverge and merge over time.
+这个命令会以简洁和图形化的方式显示提交历史和分支指针，让你能够看到分支是如何分支和合并的。
 
-## How to Manage Branches in Git
+## 如何管理 Git 中的分支
 
-### How to Manage Merged Branches
+### 如何管理已合并的分支
 
-As your project evolves, you'll merge branches back into the main branch once their changes are finalized. To identify merged branches, execute:
+随着项目的发展，一旦更改完成，你会将分支合并回主分支。要识别已合并的分支，执行以下命令：
 
-```bash
-$ git branch --merged
-```
 
-This command lists branches that have been successfully merged into the current branch. These branches are generally safe to delete using:
+
+此命令列出已成功合并到当前分支的分支。这些分支一般可以安全地删除，使用以下命令：
 
 ```bash
 $ git branch -d branch_name
 ```
 
-However, for branches containing unmerged work, use:
+但是，对于包含未合并工作内容的分支，使用：
 
 ```bash
 $ git branch --no-merged
 ```
 
-Deleting such branches requires the '-D' flag:
+删除这些分支需要使用 '-D' 标志：
 
 ```bash
 $ git branch -D branch_name
 ```
 
-This ensures that you don't inadvertently lose any unmerged changes.
+这可以确保您不会意外丢失任何未合并的更改。
 
-### How to Rename Branches
+### 如何重命名分支
 
-To rename a local branch:
+重命名本地分支：
 
 ```bash
 $ git branch --move old_branch_name new_branch_name
 ```
 
-This command updates the branch name locally. To reflect the change on the remote repository, push the renamed branch:
+此命令在本地更新分支名称。要在远程仓库中反映此更改，推送重命名的分支：
 
 ```bash
 $ git push --set-upstream origin new_branch_name
 ```
 
-Verify the changes using:
+使用以下命令验证更改：
 
 ```bash
 $ git branch --all
 ```
 
-Ensure to delete the old branch on the remote:
+确保在远程仓库中删除旧分支：
 
 ```bash
 $ git push origin --delete old_branch_name
 ```
 
-This ensures uniformity across local and remote repositories.
+这可确保本地和远程仓库的一致性。
 
-### How to Change the Default Branch Name
+### 如何更改默认分支名称
 
-Renaming the default branch, often 'master', requires caution and coordination, as it impacts project integrations and collaborators.
+重命名默认分支（通常为 'master'）需要谨慎和协调，因为它会影响项目集成和协作者。
 
-```bash
-$ git branch --move master main
-```
-
-Once renamed, push the updated branch to the remote repo:
+重命名后，将更新后的分支推送到远程仓库：
 
 ```bash
 $ git push --set-upstream origin main
 ```
 
-Make sure you remember to update references and configurations across dependencies, tests, scripts, and repository hosts. Once done, delete the old master branch on the remote:
+确保记得更新依赖项、测试、脚本和仓库主机中的引用和配置。完成后，删除远程的旧 master 分支：
 
 ```bash
 $ git push origin --delete master
 ```
 
-This is **different from `$ git config --global init.defaultBranch main`** that we discussed in the configuration part in the following ways:
+这与我们在配置部分讨论的 **`$ git config --global init.defaultBranch main`** 有以下不同：
 
--   `$ git branch --move master main`: This command renames the existing branch named "master" to "main" within the current repository. It is a sort of local operation that affects only the repository.
--   `$ git config --global init.defaultBranch main`: This command sets the default branch name for new repositories globally. It does not rename existing branches but ensures that any new repositories created thereafter will use "main" as the default branch name instead of "master".
+-   `$ git branch --move master main`: 此命令将当前仓库中名为 "master" 的现有分支重命名为 "main"。这是一种本地操作，仅影响当前仓库。
+-   `$ git config --global init.defaultBranch main`: 此命令全局设置新仓库的默认分支名称。它不会重命名现有分支，但确保今后创建的任何新仓库将使用 "main" 作为默认分支名称而不是 "master"。
 
-**Additional Resource**: Consider checking out this official Git [resource][30] for its informative visuals and diagrams which can provide you more clarity on remote branches and branch management concepts.
+**附加资源**: 请考虑查看这个官方 Git [资源][30]，其信息丰富的视觉效果和图表可以为你提供有关远程分支和分支管理概念的更多明确性。
 
-## Branching Workflow
+让我们更详细地了解分支，并看看一个在大型项目中常用的分支工作流。
 
-Let's understand branches in more detail and look at a common branching workflow that is used in large projects.
+### 长期分支
 
-### Long-Running Branches
+在 Git 中，长期分支是指保持长时间开启的分支。
 
-In Git, long-running branches are branches that remain open over an extended period.
+### 主题分支
 
-### Topic Branches
+`主题`/`功能`分支是为特定功能或工作创建的短期分支。与长期分支不同，后者会持续存在，而主题分支在工作完成后通常会被创建、使用并删除。
 
-`Topic`/`Feature` branches are short-lived branches created for specific features or pieces of work. Unlike long-running branches, which persist over time, topic branches are created, used, and often deleted once the work is complete.
+**示例:** 让我们考虑一个团队维护两个长期分支的场景：`master` 和 `develop`。
 
-**Example:** Let's consider a scenario where a team maintains two long-running branches: `master` and `develop`.
+-   `master` 分支只包含稳定的代码，可能是已经发布或将要发布的代码。
+-   `develop` 分支作为正在进行中的开发的暂存区域。尽管它可能并不总是稳定的，但它作为新功能的测试场地。
 
--   The `master` branch contains only stable code, possibly what has been released or will be released.
--   The `develop` branch acts as a staging area for ongoing development. While it might not always be stable, it serves as a testing ground for new features.
+开发者将功能分支中的更改合并到 `develop` 分支中进行测试。一旦功能经过充分测试且稳定后，它们会被合并到 `master` 分支。
 
-Developers merge changes from feature branches into the `develop` branch for testing. Once features are thoroughly tested and stable, they are merged into `master`.
+这保持了一种稳定代码与开发代码的明确分离，确保只有完全测试过的功能才会进入稳定版发布。
 
-Note how changes progress through different levels of stability, moving from the least stable (feature branches) to more stable ones (such as the develop branch), as they undergo testing and refinement, and are finally merged into the most stable main/master branch.
+### 分支最佳实践
 
-This maintains a clear separation between stable and development code, ensuring that only thoroughly tested features make their way into the stable release.
+1.  **创建描述性分支名称**：使用有意义的分支名称，反映正在开发的目的或功能。
+2.  **删除未使用的分支**：一旦分支完成了其目的并且更改已合并到主分支中，考虑删除它以保持仓库的干净和可管理性。
 
-### Branching Best Practices
+## Git 中的 Rebase
 
-1.  **Create Descriptive Branch Names**: Use meaningful branch names that reflect the purpose or feature being developed.
-2.  **Delete Unused Branches**: Once a branch has served its purpose and its changes have been merged into the main branch, consider deleting it to keep the repository clean and manageable.
+在 Git 中，当你使用分支时，有两种主要方式将一个分支的更改集成到另一个分支中：合并和重基。
 
-## Rebasing in Git
+与可能会创建包含多个合并提交的杂乱历史的合并不同，重基会生成一个线性历史，使得理解随时间推移所做的更改序列变得更容易。
 
-In Git, when you're working with branches, there are two primary ways to integrate changes from one branch into another: merging and rebasing.
+### 基本重基示例
 
-Unlike merging, which can create a cluttered history with multiple merge commits, rebasing produces a linear history, making it easier to understand the sequence of changes made over time.
-
-### Basic Rebase Example
-
-Imagine you're working on a project with two branches: "feature" and "master". You've made some commits on the "feature" branch and now want to integrate these changes into the "master" branch using rebasing.
-
-First, you switch to your "feature" branch:
+假设你在一个项目上工作，有两个分支："feature" 和 "master"。你已经在 "feature" 分支上做了一些提交，现在想要通过重基将这些更改集成到 "master" 分支中。
 
 ```bash
 $ git checkout feature
 ```
 
-Then, you rebase your feature branch onto the master branch:
+然后，将你的 feature 分支变基到 master 分支上：
 
 ```bash
 $ git rebase master
 ```
 
-This command takes all the commits/changes you made on your "feature" branch and applies them on top of the latest commits in the "master" branch, and replays the commits one by one.
+此命令会将你在 "feature" 分支上做的所有提交/更改应用到 "master" 分支的最新提交之上，并逐一重放这些提交。
 
-Not only master branch, you can also rebase a topic branch onto another topic branch. Example:
+不仅仅是 master 分支，你还可以将一个主题分支变基到另一个主题分支上。例如：
 
-Suppose you're working on a project with two feature branches: "frontend" and "backend". You made some commits on the "frontend" branch and now want to integrate these changes into the "backend" branch.
+假设你在一个项目中有两个功能分支："frontend" 和 "backend"。你在 "frontend" 分支上进行了些提交，现在希望将这些更改整合到 "backend" 分支中。
 
-Let's use a different approach this time -  
-use `--onto` option of `git rebase` to rebase the "frontend" branch onto the "backend" branch:
+这次我们采用另一种方法 -  
+使用 `git rebase` 的 `--onto` 选项将 "frontend" 分支变基到 "backend" 分支上：
 
 ```bash
 $ git rebase --onto backend frontend
 ```
 
-After rebasing, switch back to the "backend" branch and perform a fast-forward merge:
+变基之后，切换回 "backend" 分支并执行快进合并：
 
 ```bash
 $ git checkout backend
 $ git merge frontend
 ```
 
-Now, your project history appears linear, reflecting the sequential integration of changes from the "frontend" branch into the "backend" branch.
+现在，你的项目历史看起来是线性的，反映了从 "frontend" 分支到 "backend" 分支的顺序集成的更改。
 
-### Rebasing vs Merging: Which is Better?
 
-#### Rebasing Use Cases
+#### 变基的使用场景
 
--   Suitable for feature branches that need a clean integration into the mainline branch.
--   Preferred for open-source contributions where a clean commit history is valued.
+-   适用于需要干净集成到主线分支的功能分支。
+-   在开源贡献中倾向使用，因其价值在于干净的提交历史。
 
-#### Merging Use Cases
+#### 合并的使用场景
 
--   Appropriate for collaborative environments where transparency in the project's development process is crucial.
--   Useful for projects where maintaining an accurate historical record is a priority.
+-   适合需要项目开发过程透明度的协作环境。
+-   对需要维护准确历史记录的项目有用。
 
-## Conclusion
+## 结论
 
-This handbook serves as a comprehensive guide to understanding and utilizing Git, a powerful version control system widely used in software development.
+本手册是理解和利用 Git 的全面指南，Git 是一个在软件开发中广泛使用的强大版本控制系统。
 
-From basic workflows to setting up a repository, tagging, and branching remote repositories, we have learnt a comprehensive suite of features that will help streamlining the development process.
+从基本工作流程到建立仓库，标记和分支远程存储库，我们学到了一整套能够帮助简化开发过程的功能。
 
 ---
 
@@ -1028,43 +940,5 @@ From basic workflows to setting up a repository, tagging, and branching remote r
 
 [Samyak Jain][31]
 
-Insatiable learner with a web developer's toolkit. The world of science endlessly fascinates me. More at samyakinfo.tech
+一个拥有网页开发工具包的贪婪学习者。科学世界无尽地让我着迷。更多信息请访问 samyakinfo.tech
 
----
-
-If you read this far, thank the author to show them you care. Say Thanks
-
-Learn to code for free. freeCodeCamp's open source curriculum has helped more than 40,000 people get jobs as developers. [Get started][32]
-
-[1]: /news/tag/git/
-[2]: /news/author/samyak/
-[3]: #what-is-git
-[4]: #what-makes-git-different-from-other-version-control-systems
-[5]: #the-three-states-and-basic-git-workflow
-[6]: #first-time-git-setup
-[7]: #how-to-get-help-in-git
-[8]: #how-to-get-a-git-repository
-[9]: #1-how-to-initialize-a-repository-in-an-existing-directory-in-git
-[10]: #2-how-to-clone-an-existing-repository-in-git-
-[11]: #how-to-record-changes-to-the-repository
-[12]: #how-to-view-commit-history-in-git
-[13]: #how-to-undo-things-in-git
-[14]: #how-to-work-with-remote-repositories-in-git
-[15]: #tagging-in-git
-[16]: #git-aliases
-[17]: #git-branching
-[18]: #how-to-create-a-new-branch-in-git-
-[19]: #understanding-branches
-[20]: #how-to-switch-to-another-branch-in-git-
-[21]: #how-to-visualise-branches-in-git-
-[22]: #how-to-manage-branches-in-git
-[23]: #how-to-manage-merged-branches
-[24]: #how-to-rename-branches
-[25]: #how-to-change-the-default-branch-name
-[26]: #branching-workflow
-[27]: #rebasing-in-git
-[28]: #conclusion
-[29]: https://git-scm.com/download/win
-[30]: https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches
-[31]: /news/author/samyak/
-[32]: https://www.freecodecamp.org/learn/

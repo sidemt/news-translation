@@ -25,17 +25,18 @@ jobs:
         with:
           newsLink: '${{ github.event.issue.Body }}'
           ignoreSelector: '.ad-wrapper'
-          markDownFilePath: './chinese/articles/'
+          markDownFilePath: './articles/raw/'
           githubToken: ${{ github.token }}
 
-      - name:
+      - name: article-markdown-auto-translat
         uses: budblack/article-markdown-auto-translate@dev
         with:
           issueTitle: '${{ github.event.issue.title }}'
           newsLink: '${{ github.event.issue.Body }}'
           ignoreSelector: '.ad-wrapper'
-          markDownFilePath: './chinese/articles/'
+          markDownFilePath: './articles/raw/'
           githubToken: ${{ github.token }}
+          openaiApiKey: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Git Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v5
