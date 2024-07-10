@@ -38,6 +38,9 @@ jobs:
           githubToken: ${{ github.token }}
           openaiApiKey: ${{ secrets.OPENAI_API_KEY }}
 
+      - name: Pull latest changes
+        run: git pull origin main
+
       - name: Git Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
