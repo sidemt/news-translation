@@ -25,7 +25,7 @@ jobs:
         with:
           newsLink: '${{ github.event.issue.Body }}'
           ignoreSelector: '.ad-wrapper'
-          markDownFilePath: './chinese/articles/'
+          markDownFilePath: './articles/raw/'
           githubToken: ${{ github.token }}
 
       - name: article-markdown-auto-translat
@@ -33,7 +33,7 @@ jobs:
         with:
           newsLink: '${{ github.event.issue.Body }}'
           ignoreSelector: '.ad-wrapper'
-          markDownFilePath: './chinese/articles/'
+          markDownFilePath: './articles/raw/'
           githubToken: ${{ github.token }}
           openaiApiKey: ${{ secrets.OPENAI_API_KEY }}
 
