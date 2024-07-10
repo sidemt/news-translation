@@ -1,6 +1,6 @@
 ---
 title: How to Use Callback Functions in JavaScript
-date: 2024-07-10T14:11:02.893Z
+date: 2024-07-10T14:33:13.411Z
 authorURL: ""
 originalURL: https://www.freecodecamp.org/news/how-to-use-callback-functions-in-javascript/
 translator: ""
