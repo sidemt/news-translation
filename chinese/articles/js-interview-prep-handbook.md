@@ -194,13 +194,13 @@ debouncedFun(2, 3);
 debouncedFun(2, 3); // 这是一个带有参数 2 和 3 的函数
 ```
 
-前两次调用不会执行，而第三次调用会在500毫秒后执行。防抖函数使用了闭包概念，所以首先理解它们是很重要的。
+前两次调用不会执行，而第三次调用会在 500 毫秒后执行。防抖函数使用了闭包概念，所以首先理解它们是很重要的。
 
 防抖函数有很多应用场景，最流行的一个是搜索栏中的自动补全功能。我在以下帖子中详细解释了防抖函数：
 
 在 JavaScript 中防抖 – 通过在 React 中构建自动完成功能进行讲解
 
-嗨，读者们，希望你们一切都好！我带着另一个关于 web 开发的教程回来了。如果你是一个喜欢用 JavaScript 和 React 开发 web 应用程序的人，那么这篇文章就是为你准备的。当你将一个新的应用程序推向生产环境时，你想确保它是用户友好的。一个网站的…
+嗨，读者们，希望你们一切都好！我带着另一个关于 web 开发的教程回来了。如果你是一个喜欢用 JavaScript 和 React 开发 web 应用程序的人，那么这篇文章就是为你准备的。当你将一个新的应用程序推向生产环境时，你想确保它是用户友好的。一个网站的……
 
 ![favicon](https://cdn.freecodecamp.org/universal/favicons/favicon.ico)Kunal NalawadefreeCodeCamp.org
 
@@ -406,9 +406,9 @@ objGetInfo();
 
 ## 什么是原型和原型继承？
 
-继承是面向对象编程中的一个概念，它允许一个对象从另一个对象继承属性和方法。然而，在JavaScript中，继承的工作方式有所不同。
+继承是面向对象编程中的一个概念，它允许一个对象从另一个对象继承属性和方法。然而，在 JavaScript 中，继承的工作方式有所不同。
 
-在JavaScript中，每个对象都有一个链接到另一个对象的属性，称为原型。原型本身是一个对象，可以拥有自己的原型，从而形成原型链。当我们达到一个等于`null`的原型时，这条链就结束了。
+在 JavaScript 中，每个对象都有一个链接到另一个对象的属性，称为原型。原型本身是一个对象，可以拥有自己的原型，从而形成原型链。当我们达到一个等于`null`的原型时，这条链就结束了。
 
 让我们通过一个例子来理解。
 
@@ -461,7 +461,7 @@ Animal.prototype.walk = function () {
 
 JavaScript 原型和继承 —— 为什么说 JS 中的一切都是对象
 
-大家好！在这篇短文中，我们将讨论 JavaScript 中的原型继承，以及它的意义。 目录 \* 引言 \* 如何在 JavaScript 中访问原型的属性和方法 \* 原型链 \* 基于原型的语言 \* Javascript c…
+大家好！在这篇短文中，我们将讨论 JavaScript 中的原型继承，以及它的意义。 目录 \* 引言 \* 如何在 JavaScript 中访问原型的属性和方法 \* 原型链 \* 基于原型的语言 \* Javascr……pt c…
 
 ![favicon](https://cdn.freecodecamp.org/universal/favicons/favicon.ico)Germán Cocca freeCodeCamp.org
 
@@ -583,7 +583,7 @@ asyncOperation()
 
 JavaScript Promise 教程 – 如何在 JS 中解析或拒绝 Promises
 
-Promises 是JavaScript中用于异步操作的重要构建块。你可能认为 promises 不太容易理解、学习和使用。相信我，你并不是唯一这样觉得的人！很多 web 开发者，即使花费多年时间与 promises 一起工作，也会觉得这个过程充满挑战。在本...
+Promises 是 JavaScript 中用于异步操作的重要构建块。你可能认为 promises 不太容易理解、学习和使用。相信我，你并不是唯一这样觉得的人！很多 web 开发者，即使花费多年时间与 promises 一起工作，也会觉得这个过程充满挑战。在本...
 
 
 ![cover-1](https://www.freecodecamp.org/news/content/images/2020/11/cover-1.png)
@@ -611,7 +611,7 @@ async function fetchData() {
 fetchData();
 ```
 
-当 `dataPromise()` 被调用时，函数的执行会暂停500毫秒。在 promise 被解决后，执行会继续。为了处理错误，可以用 `try-catch` 代码块将代码包围起来。
+当 `dataPromise()` 被调用时，函数的执行会暂停 500 毫秒。在 promise 被解决后，执行会继续。为了处理错误，可以用 `try-catch` 代码块将代码包围起来。
 
 `await` 关键字还使处理一个接一个运行的多个 promise 变得更简单。
 

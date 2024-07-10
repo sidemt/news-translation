@@ -101,9 +101,7 @@ function defaultBgColor() {
 -   `document.body.style.backgroundColor = 'yellow';` 在 `setBgYellow()` 函数中将 `body` 的背景颜色设置为黄色。
     
 -   `document.body.style.backgroundColor = 'white';` 在 `defaultBgColor()` 函数中将 `body` 的背景颜色设置为白色。
-```
 
-```
 <!DOCTYPE html>
 <html lang="zh">
 <head>
