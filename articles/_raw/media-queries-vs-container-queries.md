@@ -1,6 +1,6 @@
 ---
 title: Media Queries vs Container Queries – Which Should You Use and When?
-date: 2024-07-10T15:09:21.001Z
+date: 2024-07-10T15:13:55.371Z
 authorURL: ""
 originalURL: https://www.freecodecamp.org/news/media-queries-vs-container-queries/
 translator: ""
