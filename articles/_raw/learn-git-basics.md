@@ -1,26 +1,15 @@
 ---
 title: Learn Git Fundamentals – A Handbook on Day-to-Day Development Tasks
-date: 2024-04-03T03:57:39.000Z
-author: Samyak Jain
-authorURL: https://www.freecodecamp.org/news/author/samyak/
+date: 2024-07-10T14:00:43.749Z
+authorURL: ""
 originalURL: https://www.freecodecamp.org/news/learn-git-basics/
 translator: ""
 reviewer: ""
 ---
 
-/ [#Git][1]
+Welcome to my comprehensive guide on Git, the distributed version control system that has revolutionized collaboration and code management in software development.
 
 <!-- more -->
-
-# Learn Git Fundamentals – A Handbook on Day-to-Day Development Tasks
-
-![Samyak Jain](https://www.freecodecamp.org/news/content/images/size/w60/2024/02/profilepic.png)
-
-[Samyak Jain][2]
-
-  ![Learn Git Fundamentals – A Handbook on Day-to-Day Development Tasks](https://www.freecodecamp.org/news/content/images/size/w2000/2024/04/Learn-Git-Basics-Cover-3--1-.png)
-
-Welcome to my comprehensive guide on Git, the distributed version control system that has revolutionized collaboration and code management in software development.
 
 Whether you're a seasoned developer or just starting your journey in programming, understanding Git is essential to gain proper control over your code, efficiently managing your projects and collaborating with others.
 
@@ -34,32 +23,32 @@ All you need to bring to the table is a curious and eager-to-learn mindset. This
 
 ## **Table of Contents:**
 
-1.  [What is Git?][3]  
-    – [Difference from other version control systems][4]  
-    – [The Three States and Basic Git Workflow][5]
-2.  [First-Time Git Setup][6]
-3.  [Get Help in Git][7]
-4.  [How to Get a Git Repository][8]  
-    – [Initialize a Repository in an Existing Directory][9]  
-    – [Clone an Existing Repository in Git][10]
-5.  [How to Record Changes to the Repository][11]
-6.  [View Commit History in Git][12]
-7.  [Undo Things in Git][13]
-8.  [Remote Repositories in Git][14]
-9.  [Tagging in Git][15]
-10.  [Git Aliases][16]
-11.  [Git Branching][17]  
-    – [Create a New Branch in Git][18]  
-    – [Understanding Branches][19]  
-    – [Switch to Another Branch in Git][20]  
-    – [Visualise Branches in Git][21]
-12.  [How to Manage Branches in Git][22]  
-    – [Managing Merged Branches][23]  
-    – [Renaming Branches][24]  
-    – [Changing the Default Branch Name][25]
-13.  [Branching Workflow][26]
-14.  [Rebasing in Git][27]
-15.  [Conclusion][28]
+1.  [What is Git?][1]  
+    – [Difference from other version control systems][2]  
+    – [The Three States and Basic Git Workflow][3]
+2.  [First-Time Git Setup][4]
+3.  [Get Help in Git][5]
+4.  [How to Get a Git Repository][6]  
+    – [Initialize a Repository in an Existing Directory][7]  
+    – [Clone an Existing Repository in Git][8]
+5.  [How to Record Changes to the Repository][9]
+6.  [View Commit History in Git][10]
+7.  [Undo Things in Git][11]
+8.  [Remote Repositories in Git][12]
+9.  [Tagging in Git][13]
+10.  [Git Aliases][14]
+11.  [Git Branching][15]  
+    – [Create a New Branch in Git][16]  
+    – [Understanding Branches][17]  
+    – [Switch to Another Branch in Git][18]  
+    – [Visualise Branches in Git][19]
+12.  [How to Manage Branches in Git][20]  
+    – [Managing Merged Branches][21]  
+    – [Renaming Branches][22]  
+    – [Changing the Default Branch Name][23]
+13.  [Branching Workflow][24]
+14.  [Rebasing in Git][25]
+15.  [Conclusion][26]
 
 ## What is Git?
 
@@ -101,7 +90,7 @@ Understanding Git's three states—modified, staged, and committed—is essentia
 
 ## First-Time Git Setup
 
-Setting up Git for the first time involves customizing your Git environment to suit your preferences. But first, you'll need to download Git from [Git - Downloads][29] or use the Chocolatey package. Then just follow the installation instructions and you should be good to go.
+Setting up Git for the first time involves customizing your Git environment to suit your preferences. But first, you'll need to download Git from [Git - Downloads][27] or use the Chocolatey package. Then just follow the installation instructions and you should be good to go.
 
 ### Git Configuration
 
@@ -930,7 +919,7 @@ This is **different from `$ git config --global init.defaultBranch main`** that 
 -   `$ git branch --move master main`: This command renames the existing branch named "master" to "main" within the current repository. It is a sort of local operation that affects only the repository.
 -   `$ git config --global init.defaultBranch main`: This command sets the default branch name for new repositories globally. It does not rename existing branches but ensures that any new repositories created thereafter will use "main" as the default branch name instead of "master".
 
-**Additional Resource**: Consider checking out this official Git [resource][30] for its informative visuals and diagrams which can provide you more clarity on remote branches and branch management concepts.
+**Additional Resource**: Consider checking out this official Git [resource][28] for its informative visuals and diagrams which can provide you more clarity on remote branches and branch management concepts.
 
 ## Branching Workflow
 
@@ -1022,49 +1011,31 @@ This handbook serves as a comprehensive guide to understanding and utilizing Git
 
 From basic workflows to setting up a repository, tagging, and branching remote repositories, we have learnt a comprehensive suite of features that will help streamlining the development process.
 
----
-
-![Samyak Jain](https://www.freecodecamp.org/news/content/images/size/w60/2024/02/profilepic.png)
-
-[Samyak Jain][31]
-
-Insatiable learner with a web developer's toolkit. The world of science endlessly fascinates me. More at samyakinfo.tech
-
----
-
-If you read this far, thank the author to show them you care. Say Thanks
-
-Learn to code for free. freeCodeCamp's open source curriculum has helped more than 40,000 people get jobs as developers. [Get started][32]
-
-[1]: /news/tag/git/
-[2]: /news/author/samyak/
-[3]: #what-is-git
-[4]: #what-makes-git-different-from-other-version-control-systems
-[5]: #the-three-states-and-basic-git-workflow
-[6]: #first-time-git-setup
-[7]: #how-to-get-help-in-git
-[8]: #how-to-get-a-git-repository
-[9]: #1-how-to-initialize-a-repository-in-an-existing-directory-in-git
-[10]: #2-how-to-clone-an-existing-repository-in-git-
-[11]: #how-to-record-changes-to-the-repository
-[12]: #how-to-view-commit-history-in-git
-[13]: #how-to-undo-things-in-git
-[14]: #how-to-work-with-remote-repositories-in-git
-[15]: #tagging-in-git
-[16]: #git-aliases
-[17]: #git-branching
-[18]: #how-to-create-a-new-branch-in-git-
-[19]: #understanding-branches
-[20]: #how-to-switch-to-another-branch-in-git-
-[21]: #how-to-visualise-branches-in-git-
-[22]: #how-to-manage-branches-in-git
-[23]: #how-to-manage-merged-branches
-[24]: #how-to-rename-branches
-[25]: #how-to-change-the-default-branch-name
-[26]: #branching-workflow
-[27]: #rebasing-in-git
-[28]: #conclusion
-[29]: https://git-scm.com/download/win
-[30]: https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches
-[31]: /news/author/samyak/
-[32]: https://www.freecodecamp.org/learn/
+[1]: #what-is-git
+[2]: #what-makes-git-different-from-other-version-control-systems
+[3]: #the-three-states-and-basic-git-workflow
+[4]: #first-time-git-setup
+[5]: #how-to-get-help-in-git
+[6]: #how-to-get-a-git-repository
+[7]: #1-how-to-initialize-a-repository-in-an-existing-directory-in-git
+[8]: #2-how-to-clone-an-existing-repository-in-git-
+[9]: #how-to-record-changes-to-the-repository
+[10]: #how-to-view-commit-history-in-git
+[11]: #how-to-undo-things-in-git
+[12]: #how-to-work-with-remote-repositories-in-git
+[13]: #tagging-in-git
+[14]: #git-aliases
+[15]: #git-branching
+[16]: #how-to-create-a-new-branch-in-git-
+[17]: #understanding-branches
+[18]: #how-to-switch-to-another-branch-in-git-
+[19]: #how-to-visualise-branches-in-git-
+[20]: #how-to-manage-branches-in-git
+[21]: #how-to-manage-merged-branches
+[22]: #how-to-rename-branches
+[23]: #how-to-change-the-default-branch-name
+[24]: #branching-workflow
+[25]: #rebasing-in-git
+[26]: #conclusion
+[27]: https://git-scm.com/download/win
+[28]: https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches
