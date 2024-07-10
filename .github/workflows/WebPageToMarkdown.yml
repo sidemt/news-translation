@@ -24,6 +24,7 @@ jobs:
         uses: budblack/article-webpage-to-markdown-action@dev
         with:
           newsLink: '${{ github.event.issue.Body }}'
+          includeSelector: '.post-content'
           ignoreSelector: '.ad-wrapper'
           markDownFilePath: './articles/raw/'
           githubToken: ${{ github.token }}
