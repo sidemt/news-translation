@@ -31,7 +31,7 @@ jobs:
           githubToken: ${{ github.token }}
 
       - name: article-markdown-auto-translat
-        uses: sidemt/article-markdown-auto-translate@test-gpt3
+        uses: sidemt/article-markdown-auto-translate@dev
         with:
           issueTitle: '${{ github.event.issue.title }}'
           newsLink: '${{ github.event.issue.Body }}'
