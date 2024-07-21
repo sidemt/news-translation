@@ -31,20 +31,21 @@ async function translate(str_md: string, str_prompt: string, with_task_translate
 export async function task_auto_translate_step_02_trans_articels(
     options: main_options
 ) {
-    const {
+    let {
         with_issue_title,
         with_task_translate_openai_api_key,
         with_task_translate_to_save_path,
         step_01_result_mdfiles
     } = options;
-    const target_language = with_issue_title.match(/\[Auto\]\[(.+)\]/)?.[1] || '';
-    debug('target_language:' + target_language);
-    const str_prompt = map_str_prompts[target_language];
+    const target_lang_code = with_issue_title.match(/\[Auto\]\[(.+)\]/)?.[1] || '';
+    debug('target_language:' + target_lang_code);
+    const str_prompt = map_str_prompts[target_lang_code];
     debug('str_prompt:' + str_prompt);
     if (!str_prompt) {
         throw new Error('Unsupported language');
     }
 
+    with_task_translate_to_save_path = with_task_translate_to_save_path.replace('{lang}', target_lang_code);
     for (const mdfile of step_01_result_mdfiles) {
         const str_md = await readFile(mdfile, 'utf-8');
         const arr_str_md = str_md.split('\n\n');
