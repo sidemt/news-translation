@@ -1,6 +1,6 @@
 ---
 title: How to Optimize Next.js App Performance With Lazy Loading
-date: 2024-07-21T13:48:32.388Z
+date: 2024-07-21T13:52:19.504Z
 author: TAPAS ADHIKARY
 authorURL: https://www.freecodecamp.org/news/author/tapas/
 OriginalURL: https://www.freecodecamp.org/news/next-js-performance-optimization/
