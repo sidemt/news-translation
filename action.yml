@@ -1,0 +1,26 @@
+name: 'article-auto-translate'
+description: 'Automatically translate markdown files with OpenAI GPT-4o.'
+author: ''
+inputs:
+  issueTitle:
+    description: 'A string in a specific format that contains the title of the issue.'
+    required: true
+  newsLink:
+    description: 'A string in a specific format that contains a link to a article.'
+    required: true
+  ignoreSelector:
+    description: 'CSS selector of elements which should be ignored'
+  markDownFilePath:
+    description: 'Path of the generated MarkDown file and relative path relative to the root folder.'
+    required: true
+    default: './'
+  githubToken:
+    description: ' GitHub  write and read token,auto create,no need to set'
+    default: ''
+  openaiApiKey:
+    description: 'OpenAI API key'
+    required: true
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

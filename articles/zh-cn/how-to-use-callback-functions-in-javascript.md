@@ -166,7 +166,6 @@ fetchData()
   });
 ```
 
-```
 
 ```js
 async function getData() {
@@ -206,5 +205,3 @@ getData();
 [9]: https://www.freecodecamp.org/news/guide-to-javascript-promises/
 [10]: http://www.linkedin.com/in/samuel-oluwadamisi-01b3a4236
 [11]: https://twitter.com/Data_Steve_
-```
-
