@@ -23,7 +23,7 @@ jobs:
         run: pnpm format
 
       - name: Auto build
-        run: npm version patch && npm run build
+        run: npm run build
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
