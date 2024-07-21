@@ -95,7 +95,7 @@ jobs:
             core.setOutput('card_id', cardId);
             core.setOutput('project_url', projectUrl);
             core.setOutput('project_name', projectName);
-          github-token: ${{ secrets.MOVE_CARDS_TOKEN }}
+          github-token: ${{ secrets.ACTION_GITHUB_TOKEN }}
 
   assign_issue:
     name: Assign issue and update project card
@@ -160,7 +160,7 @@ jobs:
         uses: titoportas/update-project-fields@v0.1.0
         with:
           project-url: ${{ needs.validate_and_get_card.outputs.project_url }}
-          github-token: ${{ secrets.MOVE_CARDS_TOKEN }}
+          github-token: ${{ secrets.ACTION_GITHUB_TOKEN }}
           item-id: ${{ needs.validate_and_get_card.outputs.card_id }}
           field-keys: Status
           field-values: ${{ needs.validate_and_get_card.outputs.target_status }}
