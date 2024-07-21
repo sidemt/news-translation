@@ -13,6 +13,7 @@
   "devDependencies": {
     "@lint-md/cli": "^2.0.0",
     "@types/node": "^20.14.11",
+    "@vercel/ncc": "^0.38.1",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5"
@@ -30,6 +31,7 @@
     "format": "lint-md chinese/**/*.md --fix",
     "test": "lint-staged",
     "prepare": "husky",
+    "build": "npm run action:build",
     "action:build": "rimraf dist/  &&  ncc build ./src/index.ts -m -o dist --license licenses.txt"
   },
   "dependencies": {
