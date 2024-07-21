@@ -88,7 +88,7 @@ export async function utils_web_fetch_to_mdfile(
 
     // Compute the filename to save
     options.str_mdfile_to_save_name = str_mdfile_to_save_name || str_url.split('/').filter(Boolean).at(-1) + '.md';
-    const str_mdfile_to_save_filename = join(str_mdfile_to_save_dir, str_mdfile_to_save_name);
+    const str_mdfile_to_save_filename = join(str_mdfile_to_save_dir, options.str_mdfile_to_save_name );
 
     // If the file already exists, program will overwrite it.
     await outputFile(str_mdfile_to_save_filename, text_article);

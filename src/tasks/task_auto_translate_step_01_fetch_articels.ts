@@ -21,6 +21,8 @@ export async function task_auto_translate_step_01_fetch_articels(options: main_o
         };
         const meta = await utils_web_fetch_to_mdfile(utils_web_fetch_to_mdfile_options);
         const { str_mdfile_to_save_name } = utils_web_fetch_to_mdfile_options;
+        console.log('meta:', meta);
+        console.log('str_mdfile_to_save_name:', str_mdfile_to_save_name);
         const str_mdfile = join(options.with_task_fetch_to_save_path, str_mdfile_to_save_name);
         options.step_01_result_mdfiles.push(str_mdfile);
         options.step_01_result_metas.push(meta);

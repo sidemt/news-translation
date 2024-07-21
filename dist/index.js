@@ -78049,7 +78049,7 @@
       const Br = `---\r\n${Ir}\r\n---\r\n\r\n${Ar.replace('\n\n', '\n\n\x3c!-- more --\x3e\n\n')}`;
       a.str_mdfile_to_save_name =
         q || C.split('/').filter(Boolean).at(-1) + '.md';
-      const Qr = (0, as.join)(re, q);
+      const Qr = (0, as.join)(re, a.str_mdfile_to_save_name);
       await (0, ls.outputFile)(Qr, Br);
       return Wt;
     }
@@ -80552,6 +80552,8 @@
         };
         const re = await utils_web_fetch_to_mdfile(q);
         const { str_mdfile_to_save_name: ae } = q;
+        console.log('meta:', re);
+        console.log('str_mdfile_to_save_name:', ae);
         const Ue = (0, as.join)(a.with_task_fetch_to_save_path, ae);
         a.step_01_result_mdfiles.push(Ue);
         a.step_01_result_metas.push(re);
