@@ -78035,9 +78035,10 @@
       });
       const { document: Pt } = lt;
       if (ae) {
-        const a = Pt.querySelector(ae);
+        const a = Pt.querySelectorAll(ae);
         if (a) {
-          Pt.body.innerHTML = a.outerHTML;
+          Pt.body.innerHTML = '';
+          Pt.body.append(...a);
         }
       }
       const { meta: Wt, content: Ar } = HTMLtoMarkdown(Pt, Ue);
@@ -85551,24 +85552,24 @@
     }
     async function main() {
       const a = Object.assign(new src_main_options(), {});
-      const { with_issue_title: C, with_issue_body: q } = a;
+      const { with_issue_title: C } = a;
       if (!C.toLocaleLowerCase().startsWith('[auto]')) return;
-      let re = '';
+      let q = '';
       await task_auto_translate_step_01_fetch_articels(a);
       await task_auto_translate_step_02_trans_articels(a);
-      const ae = a.step_01_result_mdfiles.length;
-      const lt = a.step_02_result_mdfiles.length;
-      if (lt !== ae) {
+      const re = a.step_01_result_mdfiles.length;
+      const ae = a.step_02_result_mdfiles.length;
+      if (ae !== re) {
         throw new Error(
           'The number of translated articles is not equal to the number of raw articles'
         );
       }
-      let Pt = `🚀 **Auto Translate**`;
-      if (ae > 1) {
-        Pt += `\n\n📚 **Articles**: ${ae}`;
-        for (let C = 0; C < ae; C++) {
-          Pt += `==========${C - 1}==========\n\n`;
-          Pt += gen_issue_comment(
+      let lt = `🚀 **Auto Translate**`;
+      if (re > 1) {
+        lt += `\n\n📚 **Articles**: ${re}`;
+        for (let C = 0; C < re; C++) {
+          lt += `==========${C - 1}==========\n\n`;
+          lt += gen_issue_comment(
             a.step_01_result_metas[C],
             a.step_01_result_mdfiles[C],
             Ue.context.repo,
@@ -85576,10 +85577,10 @@
             a.step_01_result_mdfiles[C],
             a.step_02_result_mdfiles[C]
           );
-          Pt += '\n\n';
+          lt += '\n\n';
         }
       } else {
-        Pt = gen_issue_comment(
+        lt = gen_issue_comment(
           a.step_01_result_metas[0],
           a.step_01_result_mdfiles[0],
           Ue.context.repo,
@@ -85588,8 +85589,8 @@
           a.step_02_result_mdfiles[0]
         );
       }
-      re += Pt;
-      Object.assign(a, { str_comment: re });
+      q += lt;
+      Object.assign(a, { str_comment: q });
       await utils_repo_submit_issue_comment(a);
       return;
     }

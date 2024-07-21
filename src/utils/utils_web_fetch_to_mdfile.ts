@@ -1,4 +1,4 @@
-import {  outputFile } from "fs-extra";
+import { outputFile } from "fs-extra";
 import { parseHTML } from "linkedom";
 import { join } from "path";
 import { stringify } from 'yaml';
@@ -74,9 +74,10 @@ export async function utils_web_fetch_to_mdfile(
 
     const { document } = window;
     if (str_webpage_include_selector) {
-        const includeElement = document.querySelector(str_webpage_include_selector);
+        const includeElement = document.querySelectorAll(str_webpage_include_selector);
         if (includeElement) {
-            document.body.innerHTML = includeElement.outerHTML;
+            document.body.innerHTML = '';
+            document.body.append(...includeElement);
         }
     }
     // Use some lagecy code to fetch the webpage
@@ -88,7 +89,7 @@ export async function utils_web_fetch_to_mdfile(
 
     // Compute the filename to save
     options.str_mdfile_to_save_name = str_mdfile_to_save_name || str_url.split('/').filter(Boolean).at(-1) + '.md';
-    const str_mdfile_to_save_filename = join(str_mdfile_to_save_dir, options.str_mdfile_to_save_name );
+    const str_mdfile_to_save_filename = join(str_mdfile_to_save_dir, options.str_mdfile_to_save_name);
 
     // If the file already exists, program will overwrite it.
     await outputFile(str_mdfile_to_save_filename, text_article);
