@@ -6,6 +6,8 @@ on:
 jobs:
   ArticlesAutoTranslate:
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_RUNNER_DEBUG: true
     permissions:
       issues: write
       contents: write
