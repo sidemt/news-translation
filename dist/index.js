@@ -68254,16 +68254,6 @@
       (0, ae.debug)(`repository: ${Pt}`);
       (0, ae.debug)(`comment: ${C}`);
     }
-    class task_parse_action_issue_intent_options extends (null &&
-      main_options) {}
-    async function task_parse_action_issue_intent(a) {
-      const { with_issue_title: C, with_issue_body: q } = a;
-      if (C.startsWith('[AUTO]')) {
-        (0, ae.debug)('Issue title intent detected');
-        return 'AUTO_TRANSLATE';
-      }
-      return 'NO_INTENT';
-    }
     var as = __nccwpck_require__(1017);
     var ls = __nccwpck_require__(1361);
     const cs = Symbol('changed');
@@ -85556,42 +85546,41 @@
     }
     async function main() {
       const a = Object.assign(new src_main_options(), {});
-      const C = await task_parse_action_issue_intent(a);
-      let q = '';
-      if ('AUTO_TRANSLATE' === C) {
-        await task_auto_translate_step_01_fetch_articels(a);
-        await task_auto_translate_step_02_trans_articels(a);
-        const C = a.step_01_result_mdfiles.length;
-        const re = a.step_02_result_mdfiles.length;
-        if (re !== C) {
-          throw new Error(
-            'The number of translated articles is not equal to the number of raw articles'
-          );
-        }
-        let ae = `🚀 **Auto Translate**`;
-        if (C > 1) {
-          ae += `\n\n📚 **Articles**: ${C}`;
-          for (let q = 0; q < C; q++) {
-            const C = a.step_01_result_metas[q];
-            const re = a.step_01_result_mdfiles[q];
-            const Ue = a.step_02_result_mdfiles[q];
-            const lt = C.title;
-            ae += `\n\n📚 **[${q + 1}] - ${lt}`;
-            ae += `\n\n📚 **Raw**: [${re}](${re})`;
-            ae += `\n\n📚 **Translated**: [${Ue}](${Ue})`;
-          }
-        } else {
-          const C = a.step_01_result_metas[0];
-          const q = a.step_01_result_mdfiles[0];
-          const re = a.step_02_result_mdfiles[0];
-          const Ue = C.title;
-          ae += `\n\n📚 **[${Ue}](${q})`;
-          ae += `\n\n📚 **Raw**: [${q}](${q})`;
-          ae += `\n\n📚 **Translated**: [${re}](${re})`;
-        }
-        q = ae;
+      const { with_issue_title: C, with_issue_body: q } = a;
+      if (!C.toLocaleLowerCase().startsWith('[auto]')) return;
+      let re = '';
+      await task_auto_translate_step_01_fetch_articels(a);
+      await task_auto_translate_step_02_trans_articels(a);
+      const ae = a.step_01_result_mdfiles.length;
+      const Ue = a.step_02_result_mdfiles.length;
+      if (Ue !== ae) {
+        throw new Error(
+          'The number of translated articles is not equal to the number of raw articles'
+        );
       }
-      Object.assign(a, { str_comment: q });
+      let lt = `🚀 **Auto Translate**`;
+      if (ae > 1) {
+        lt += `\n\n📚 **Articles**: ${ae}`;
+        for (let C = 0; C < ae; C++) {
+          const q = a.step_01_result_metas[C];
+          const re = a.step_01_result_mdfiles[C];
+          const ae = a.step_02_result_mdfiles[C];
+          const Ue = q.title;
+          lt += `\n\n📚 **[${C + 1}] - ${Ue}`;
+          lt += `\n\n📚 **Raw**: [${re}](${re})`;
+          lt += `\n\n📚 **Translated**: [${ae}](${ae})`;
+        }
+      } else {
+        const C = a.step_01_result_metas[0];
+        const q = a.step_01_result_mdfiles[0];
+        const re = a.step_02_result_mdfiles[0];
+        const ae = C.title;
+        lt += `\n\n📚 **[${ae}](${q})`;
+        lt += `\n\n📚 **Raw**: [${q}](${q})`;
+        lt += `\n\n📚 **Translated**: [${re}](${re})`;
+      }
+      re = lt;
+      Object.assign(a, { str_comment: re });
       await utils_repo_submit_issue_comment(a);
       return;
     }
