@@ -85546,6 +85546,9 @@
         this.str_comment = '';
       }
     }
+    function gen_issue_comment(a, C, q, re, ae, Ue) {
+      return `\n- Original URL: [${a.title}](${C})\n- Original author: [${a.author || 'anonymous'}](${a.authorURL})\n- Markdown file: [click to view](https://github.com/${q.owner}/${q.repo}/blob/${(0, as.join)(re.replace(/^refs\/heads\//, ''), ae)})\n- Translated file: [click to edit](https://github.com/${q.owner}/${q.repo}/edit/${(0, as.join)(re.replace(/^refs\/heads\//, ''), Ue)}),\n`;
+    }
     async function main() {
       const a = Object.assign(new src_main_options(), {});
       const { with_issue_title: C, with_issue_body: q } = a;
@@ -85554,34 +85557,38 @@
       await task_auto_translate_step_01_fetch_articels(a);
       await task_auto_translate_step_02_trans_articels(a);
       const ae = a.step_01_result_mdfiles.length;
-      const Ue = a.step_02_result_mdfiles.length;
-      if (Ue !== ae) {
+      const lt = a.step_02_result_mdfiles.length;
+      if (lt !== ae) {
         throw new Error(
           'The number of translated articles is not equal to the number of raw articles'
         );
       }
-      let lt = `🚀 **Auto Translate**`;
+      let Pt = `🚀 **Auto Translate**`;
       if (ae > 1) {
-        lt += `\n\n📚 **Articles**: ${ae}`;
+        Pt += `\n\n📚 **Articles**: ${ae}`;
         for (let C = 0; C < ae; C++) {
-          const q = a.step_01_result_metas[C];
-          const re = a.step_01_result_mdfiles[C];
-          const ae = a.step_02_result_mdfiles[C];
-          const Ue = q.title;
-          lt += `\n\n📚 **[${C + 1}] - ${Ue}`;
-          lt += `\n\n📚 **Raw**: [${re}](${re})`;
-          lt += `\n\n📚 **Translated**: [${ae}](${ae})`;
+          Pt += `==========${C - 1}==========\n\n`;
+          Pt += gen_issue_comment(
+            a.step_01_result_metas[C],
+            a.step_01_result_mdfiles[C],
+            Ue.context.repo,
+            Ue.context.ref,
+            a.step_01_result_mdfiles[C],
+            a.step_02_result_mdfiles[C]
+          );
+          Pt += '\n\n';
         }
       } else {
-        const C = a.step_01_result_metas[0];
-        const q = a.step_01_result_mdfiles[0];
-        const re = a.step_02_result_mdfiles[0];
-        const ae = C.title;
-        lt += `\n\n📚 **[${ae}](${q})`;
-        lt += `\n\n📚 **Raw**: [${q}](${q})`;
-        lt += `\n\n📚 **Translated**: [${re}](${re})`;
+        Pt = gen_issue_comment(
+          a.step_01_result_metas[0],
+          a.step_01_result_mdfiles[0],
+          Ue.context.repo,
+          Ue.context.ref,
+          a.step_01_result_mdfiles[0],
+          a.step_02_result_mdfiles[0]
+        );
       }
-      re = lt;
+      re += Pt;
       Object.assign(a, { str_comment: re });
       await utils_repo_submit_issue_comment(a);
       return;
