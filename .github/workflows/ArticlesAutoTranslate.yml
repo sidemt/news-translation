@@ -33,7 +33,7 @@ jobs:
           with_issue_body: '${{ github.event.issue.Body }}'
           with_github_token: '${{ github.token }}'
           with_task_fetch_to_save_path: './articles/_raw/'
-          with_task_fetch_to_include_selector: '.post-content'
+          with_task_fetch_to_include_selector: '.author-card-name,.post-content'
           with_task_fetch_to_ignore_selector: '.ad-wrapper'
           with_task_translate_openai_api_key: ${{ secrets.OPENAI_API_KEY }}
           with_task_translate_to_save_path: './articles/{lang}/'

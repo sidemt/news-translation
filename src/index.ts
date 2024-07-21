@@ -1,7 +1,6 @@
-import { debug, getInput } from '@actions/core';
+import { getInput } from '@actions/core';
 import { context } from '@actions/github';
 import { utils_repo_submit_issue_comment } from './utils/utils_repo_submit_issue_comment';
-import { task_parse_action_issue_intent } from './tasks/task_parse_action_issue_intent';
 import { task_auto_translate_step_01_fetch_articels } from './tasks/task_auto_translate_step_01_fetch_articels';
 import { task_auto_translate_step_02_trans_articels } from './tasks/task_auto_translate_step_02_trans_articels';
 import { join } from 'path';
@@ -11,7 +10,7 @@ export class main_options {
   with_issue_body = getInput('with_issue_body')
   with_github_token = getInput('with_github_token')
   with_task_fetch_to_save_path = getInput('with_task_fetch_to_save_path')
-  with_task_fetch_to_include_selector = getInput('with_task_fetch_to_save_name')
+  with_task_fetch_to_include_selector = getInput('with_task_fetch_to_include_selector')
   with_task_fetch_to_ignore_selector = getInput('with_task_fetch_to_ignore_selector')
   with_task_translate_openai_api_key = getInput('with_task_translate_openai_api_key')
   with_task_translate_to_save_path = getInput('with_task_translate_to_save_path')
@@ -33,7 +32,7 @@ function gen_issue_comment(meta, path, repo, ref, raw_file, translated_file) {
 }
 async function main() {
   const options = Object.assign(new main_options(), {});
-  const { with_issue_title, with_issue_body } = options;
+  const { with_issue_title } = options;
   if (!with_issue_title.toLocaleLowerCase().startsWith('[auto]')) return;
 
   let str_task_result = '';
