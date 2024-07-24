@@ -85472,7 +85472,7 @@
         step_01_result_mdfiles: lt
       } = a;
       const Pt =
-        ((C = q.match(/\[Auto\]\[(.+)\]/)) === null || C === void 0
+        ((C = q.match(/\[Auto\]\[(.+?)\]/)) === null || C === void 0
           ? void 0
           : C[1]) || '';
       (0, ae.debug)('target_language:' + Pt);
