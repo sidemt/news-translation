@@ -37,7 +37,7 @@ export async function task_auto_translate_step_02_trans_articels(
         with_task_translate_to_save_path,
         step_01_result_mdfiles
     } = options;
-    const target_lang_code = with_issue_title.match(/\[Auto\]\[(.+)\]/)?.[1] || '';
+    const target_lang_code = with_issue_title.match(/\[Auto\]\[(.+?)\]/)?.[1] || '';
     debug('target_language:' + target_lang_code);
     const str_prompt = map_str_prompts[target_lang_code];
     debug('str_prompt:' + str_prompt);
